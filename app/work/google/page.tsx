@@ -13,10 +13,10 @@ export default function GoogleCase() {
       {/* Google brand wash: blue / red / yellow / green */}
       <BrandMesh
         colors={[
-          "rgba(66, 133, 244, 0.26)",
-          "rgba(234, 67, 53, 0.16)",
-          "rgba(251, 188, 5, 0.20)",
-          "rgba(52, 168, 83, 0.18)",
+          "rgba(66, 133, 244, 0.40)",
+          "rgba(234, 67, 53, 0.26)",
+          "rgba(251, 188, 5, 0.32)",
+          "rgba(52, 168, 83, 0.28)",
         ]}
       />
       <CaseHero

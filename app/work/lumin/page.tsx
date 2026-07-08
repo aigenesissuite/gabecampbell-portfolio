@@ -13,10 +13,10 @@ export default function LuminCase() {
       {/* Lumin brand wash: violet / teal / indigo */}
       <BrandMesh
         colors={[
-          "rgba(108, 92, 231, 0.24)",
-          "rgba(0, 194, 168, 0.20)",
-          "rgba(64, 120, 255, 0.18)",
-          "rgba(151, 71, 255, 0.14)",
+          "rgba(108, 92, 231, 0.36)",
+          "rgba(0, 194, 168, 0.32)",
+          "rgba(64, 120, 255, 0.28)",
+          "rgba(151, 71, 255, 0.22)",
         ]}
       />
       <CaseHero

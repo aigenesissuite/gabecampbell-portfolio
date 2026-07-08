@@ -127,10 +127,10 @@ export function BrandMesh({
       className="case-mesh"
       aria-hidden="true"
       style={{
-        background: `radial-gradient(46% 40% at 10% 6%, ${c1}, transparent 70%),
-          radial-gradient(48% 42% at 90% 10%, ${c2}, transparent 70%),
-          radial-gradient(52% 46% at 82% 86%, ${c3}, transparent 70%),
-          radial-gradient(46% 42% at 12% 90%, ${c4}, transparent 70%),
+        background: `radial-gradient(65% 60% at 16% 8%, ${c1}, transparent 72%),
+          radial-gradient(62% 58% at 86% 16%, ${c2}, transparent 72%),
+          radial-gradient(68% 62% at 82% 88%, ${c3}, transparent 72%),
+          radial-gradient(62% 58% at 14% 90%, ${c4}, transparent 72%),
           var(--bg)`,
       }}
     />

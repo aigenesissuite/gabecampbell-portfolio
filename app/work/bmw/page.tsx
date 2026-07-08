@@ -26,10 +26,10 @@ export default function BmwCase() {
       {/* BMW brand wash: BMW blue / light blue / deep blue / silver */}
       <BrandMesh
         colors={[
-          "rgba(28, 105, 212, 0.28)",
-          "rgba(129, 196, 255, 0.24)",
-          "rgba(6, 83, 182, 0.18)",
-          "rgba(180, 195, 215, 0.22)",
+          "rgba(28, 105, 212, 0.42)",
+          "rgba(129, 196, 255, 0.36)",
+          "rgba(6, 83, 182, 0.28)",
+          "rgba(180, 195, 215, 0.32)",
         ]}
       />
       <CaseHero

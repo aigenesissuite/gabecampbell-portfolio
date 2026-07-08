@@ -14,10 +14,10 @@ export default function AiosCase() {
       {/* aiOS brand wash: iOS blue / indigo / green / sky */}
       <BrandMesh
         colors={[
-          "rgba(10, 132, 255, 0.26)",
-          "rgba(94, 92, 230, 0.18)",
-          "rgba(52, 199, 89, 0.16)",
-          "rgba(90, 200, 250, 0.20)",
+          "rgba(10, 132, 255, 0.40)",
+          "rgba(94, 92, 230, 0.28)",
+          "rgba(52, 199, 89, 0.24)",
+          "rgba(90, 200, 250, 0.32)",
         ]}
       />
       <CaseHero
