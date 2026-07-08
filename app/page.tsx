@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Stat } from "@/components/site";
+import { Walkthrough } from "@/components/walkthrough";
 
 const work = [
   {
@@ -45,7 +46,7 @@ export default function Home() {
           <h1>
             I design AI products.
             <br />
-            Then I ship them.
+            <span className="shimmer">Then I ship them.</span>
           </h1>
           <p className="sub">
             13+ years designing AI-native products at Google, BMW, and enterprise
@@ -64,18 +65,7 @@ export default function Home() {
               <span className="dot" /> ai-genesis.ai — case study
             </a>
           </div>
-          <div className="video-frame">
-            <video
-              src="/video/aios-walkthrough.mp4"
-              poster="/video/poster.jpg"
-              controls
-              preload="metadata"
-            />
-          </div>
-          <p className="video-caption">
-            2-minute walkthrough: the RTR Vehicles AI employee and aiOS, narrated
-            by me. Everything shown is live in production.
-          </p>
+          <Walkthrough caption="The full walkthrough in four chapters — skip around like stories. Everything shown is live in production, narrated by me." />
         </div>
       </header>
 

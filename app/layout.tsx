@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Nav, Footer } from "@/components/site";
+import { Fx } from "@/components/fx";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={inter.variable}>
       <body>
         <div className="mesh" aria-hidden="true" />
+        <Fx />
         <Nav />
         {children}
         <Footer />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { CaseHero, Learning, NextCase } from "@/components/site";
+import { Walkthrough } from "@/components/walkthrough";
 
 export const metadata: Metadata = {
   title: "aiOS — Case Study | Gabe Campbell",
@@ -23,18 +24,7 @@ export default function AiosCase() {
 
       <section className="section">
         <div className="wrap">
-          <div className="video-frame">
-            <video
-              src="/video/aios-walkthrough.mp4"
-              poster="/video/poster.jpg"
-              controls
-              preload="metadata"
-            />
-          </div>
-          <p className="video-caption">
-            The 2-minute walkthrough — RTR&apos;s AI employee and aiOS onboarding,
-            narrated by me.
-          </p>
+          <Walkthrough caption="The walkthrough in four chapters — RTR's AI employee, the solo build, onboarding cinema, and AI over iMessage." />
         </div>
       </section>
 
