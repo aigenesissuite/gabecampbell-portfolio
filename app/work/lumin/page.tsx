@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CaseHero, Learning, NextCase, Stat } from "@/components/site";
+import { BrandMesh, CaseHero, Learning, NextCase, Stat } from "@/components/site";
 
 export const metadata: Metadata = {
   title: "Lumin Digital AI Banking — Case Study | Gabe Campbell",
@@ -10,6 +10,15 @@ export const metadata: Metadata = {
 export default function LuminCase() {
   return (
     <main>
+      {/* Lumin brand wash: violet / teal / indigo */}
+      <BrandMesh
+        colors={[
+          "rgba(108, 92, 231, 0.24)",
+          "rgba(0, 194, 168, 0.20)",
+          "rgba(64, 120, 255, 0.18)",
+          "rgba(151, 71, 255, 0.14)",
+        ]}
+      />
       <CaseHero
         eyebrow="Lumin Digital · Principal Product Designer · 2021 – 2025"
         title="AI that speaks your design language"

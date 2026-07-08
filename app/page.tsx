@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Stat } from "@/components/site";
+import { GLASS_LOOPS, GlassLoop, Stat } from "@/components/site";
 import { Walkthrough } from "@/components/walkthrough";
 
 const work = [
@@ -10,6 +10,8 @@ const work = [
     blurb:
       "Founded, designed, and coded an agentic AI platform spanning iMessage, web, and voice — live in production with paying enterprise customers. The RTR Vehicles deployment resolves 92% of support conversations automatically.",
     metrics: ["Live at myaios.app", "92% auto-resolution", "$180K/yr saved for one client"],
+    loop: GLASS_LOOPS[0],
+    accent: "rgba(0,122,255,0.18)",
   },
   {
     href: "/work/lumin",
@@ -18,6 +20,8 @@ const work = [
     blurb:
       "Conversational onboarding, AI design companions, and an enterprise platform serving 2.1M members — replacing form-wizard banking UX with natural conversation.",
     metrics: ["2.1M members", "90% onboarding completion", "$2.3M revenue"],
+    loop: GLASS_LOOPS[1],
+    accent: "rgba(88,86,214,0.18)",
   },
   {
     href: "/work/google",
@@ -26,6 +30,8 @@ const work = [
     blurb:
       "Unified five ML/AI product teams onto one design system — 67 foundation components with 85% adoption, built for AI capabilities that didn't exist yet.",
     metrics: ["50M+ users", "85% pattern adoption", "45% faster prototyping"],
+    loop: GLASS_LOOPS[2],
+    accent: "rgba(52,168,83,0.18)",
   },
   {
     href: "/work/bmw",
@@ -34,6 +40,8 @@ const work = [
     blurb:
       "BMW's first dynamic charging experience — ML-scheduled charging that cut peak-hour load 87% while guaranteeing a full battery by morning.",
     metrics: ["$4.2M revenue", "87% peak load reduction", "94% satisfaction"],
+    loop: GLASS_LOOPS[1],
+    accent: "rgba(28,105,212,0.18)",
   },
 ];
 
@@ -118,17 +126,20 @@ export default function Home() {
           <div className="grid-2">
             {work.map((w) => (
               <Link key={w.href} href={w.href} className="glass work-card">
-                <div className="kicker">{w.kicker}</div>
-                <h3>{w.title}</h3>
-                <p>{w.blurb}</p>
-                <div className="metrics">
-                  {w.metrics.map((m) => (
-                    <span key={m} className="metric-pill">
-                      {m}
-                    </span>
-                  ))}
+                <GlassLoop id={w.loop} accent={w.accent} />
+                <div className="work-card-body">
+                  <div className="kicker">{w.kicker}</div>
+                  <h3>{w.title}</h3>
+                  <p>{w.blurb}</p>
+                  <div className="metrics">
+                    {w.metrics.map((m) => (
+                      <span key={m} className="metric-pill">
+                        {m}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="view">View case study →</span>
                 </div>
-                <span className="view">View case study →</span>
               </Link>
             ))}
           </div>

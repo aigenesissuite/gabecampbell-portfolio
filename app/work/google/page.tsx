@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CaseHero, Learning, NextCase, Stat } from "@/components/site";
+import { BrandMesh, CaseHero, Learning, NextCase, Stat } from "@/components/site";
 
 export const metadata: Metadata = {
   title: "Google AI Design Foundations — Case Study | Gabe Campbell",
@@ -10,6 +10,15 @@ export const metadata: Metadata = {
 export default function GoogleCase() {
   return (
     <main>
+      {/* Google brand wash: blue / red / yellow / green */}
+      <BrandMesh
+        colors={[
+          "rgba(66, 133, 244, 0.26)",
+          "rgba(234, 67, 53, 0.16)",
+          "rgba(251, 188, 5, 0.20)",
+          "rgba(52, 168, 83, 0.18)",
+        ]}
+      />
       <CaseHero
         eyebrow="Google · Product Designer · 2020 – 2021"
         title="Building foundations for AI at scale"

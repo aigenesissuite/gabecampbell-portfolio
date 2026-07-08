@@ -16,7 +16,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; -webkit-text-size-adjust: 100%; }
 
 body {
   background: var(--bg);
@@ -81,32 +81,55 @@ img, video { max-width: 100%; display: block; }
 h1, h2, h3 { letter-spacing: -0.02em; line-height: 1.15; }
 h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; }
 
-/* Shimmering headline — slow highlight sweep */
+/* Shimmering headline — aiOS blue shimmer, ported verbatim from
+   genesis-bos globals.css (.enterprise-page .text-shimmer). Charcoal
+   base + iOS-blue band, 10s alternate sweep. */
 .shimmer {
-  background: linear-gradient(
-    110deg,
-    var(--fg) 0%,
-    var(--fg) 38%,
-    #0a84ff 47%,
-    #bf5af2 53%,
-    var(--fg) 62%,
-    var(--fg) 100%
+  display: inline-block;
+  background-image: linear-gradient(
+    90deg,
+    #1d1d1f 0%,
+    #1d1d1f 20%,
+    #2E89F8 38%,
+    #0A84FF 50%,
+    #2E89F8 62%,
+    #1d1d1f 80%,
+    #1d1d1f 100%
   );
-  background-size: 260% 100%;
-  background-position: 120% 0;
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: shimmer-sweep 6.5s ease-in-out infinite;
+  animation: rtr-blue-shimmer 10s ease-in-out infinite alternate;
 }
-@keyframes shimmer-sweep {
-  0% { background-position: 120% 0; }
-  42% { background-position: -60% 0; }
-  100% { background-position: -60% 0; }
+@keyframes rtr-blue-shimmer {
+  from { background-position: 0% 0; }
+  to   { background-position: -200% 0; }
+}
+
+/* aiOS nav wordmark shimmer — verbatim from genesis-bos (.aios-shimmer) */
+.aios-shimmer {
+  background: linear-gradient(
+    90deg,
+    #1d1d1f 0%,
+    #007AFF 25%,
+    #5AC8FA 50%,
+    #007AFF 75%,
+    #1d1d1f 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: aios-shimmer 10s linear infinite;
+}
+@keyframes aios-shimmer {
+  0% { background-position: 100% center; }
+  100% { background-position: -100% center; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .shimmer { animation: none; background-position: 120% 0; }
+  .shimmer, .aios-shimmer { animation: none; }
 }
 
 /* Scroll reveal (classes applied by Fx component) */
@@ -117,45 +140,170 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
 
-/* ---------- Floating pill nav ---------- */
-.nav {
-  position: fixed;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 50;
+/* ---------- Nav — ported 1:1 from aiOS SiteNav (site-chrome.tsx) ---------- */
+.nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  padding: 12px 12px 0;
+}
+/* Scroll-edge mask — Apple HIG pattern, same as aiOS: content fades
+   into the bg color before reaching the floating glass bar. */
+.nav-mask {
+  pointer-events: none;
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 52px;
+  background: linear-gradient(to bottom, #eae8f0 0%, rgba(234, 232, 240, 0.85) 45%, rgba(234, 232, 240, 0) 100%);
+}
+.nav-bar {
+  position: relative;
+  margin: 0 auto;
+  max-width: 64rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.40);
+  backdrop-filter: blur(40px) saturate(2.2) brightness(1.08);
+  -webkit-backdrop-filter: blur(40px) saturate(2.2) brightness(1.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.72),
+    inset 0 0 12px rgba(255, 255, 255, 0.14),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 20px rgba(0, 0, 0, 0.05),
+    0 0 0 0.5px rgba(255, 255, 255, 0.36);
+  isolation: isolate;
+}
+.nav-inner {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: var(--surface-strong);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(24px) saturate(1.6);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  box-shadow: var(--shadow-soft);
-  white-space: nowrap;
+  gap: 12px;
+  padding: 12px 20px;
 }
-.nav a {
-  padding: 8px 16px;
-  border-radius: 999px;
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
   font-size: 15px;
-  font-weight: 550;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4);
+  animation: nav-pulse 2.4s ease-in-out infinite;
+}
+@keyframes nav-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(52, 199, 89, 0); }
+}
+.nav-center {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.nav-item {
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text-secondary);
-  transition: background 0.2s, color 0.2s;
+  transition: color 0.2s, background 0.2s;
 }
-.nav a:hover { background: rgba(0, 0, 0, 0.05); color: var(--fg); }
-.nav a.brand { font-weight: 750; color: var(--fg); }
-.nav a.cta {
-  background: linear-gradient(135deg, #0a84ff, #5e5ce6 60%, #bf5af2);
-  background-size: 180% 180%;
+.nav-item:hover { color: var(--fg); background: rgba(0, 0, 0, 0.03); }
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+/* nav-cta-light — verbatim aiOS "Sign in" nested liquid glass */
+.nav-cta-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 14px;
+  padding: 0.45rem 1.1rem;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.88);
+  isolation: isolate;
+  background: rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(28px) saturate(1.85) brightness(1.04);
+  -webkit-backdrop-filter: blur(28px) saturate(1.85) brightness(1.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.52);
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+.nav-cta-light:hover { background: rgba(255, 255, 255, 0.45); }
+.nav-cta-light:active { transform: scale(0.97); }
+.lg-btn-blue.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 0.45rem 1.1rem;
+  font-size: 13px;
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .nav-center { display: none; }
+}
+@media (max-width: 560px) {
+  .nav-cta-light { display: none; }
+  .nav-inner { padding: 10px 14px; }
+}
+
+/* ---------- lg-btn-blue — verbatim aiOS primary CTA ---------- */
+.lg-btn-blue {
+  border-radius: 14px;
   color: #fff;
-  animation: btn-grad 8s ease-in-out infinite alternate;
+  cursor: pointer;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 40%),
+    linear-gradient(110deg, #0047b8 0%, #0062d9 25%, #007aff 50%, #0062d9 75%, #0047b8 100%);
+  background-size: 100% 100%, 240% 100%;
+  background-position: 0 0, 0% 50%;
+  border: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.30),
+    inset 0 -1px 0 rgba(0,0,0,0.10),
+    0 2px 8px rgba(0,122,255,0.30),
+    0 6px 24px rgba(0,122,255,0.18),
+    0 0 20px rgba(0,122,255,0.15);
+  animation: blue-cta-shimmer 6s ease-in-out infinite;
+  will-change: background-position, filter;
+  transition: box-shadow 0.25s ease, filter 0.2s ease, transform 0.15s ease;
 }
-.nav a.cta:hover { color: #fff; filter: brightness(1.08); }
-@media (max-width: 640px) {
-  .nav { gap: 0; padding: 6px 8px; }
-  .nav a { padding: 7px 10px; font-size: 13px; }
+.lg-btn-blue:hover {
+  color: #fff;
+  filter: brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 -1px 0 rgba(0,0,0,0.12),
+    0 4px 16px rgba(0,122,255,0.35),
+    0 10px 36px rgba(0,122,255,0.22),
+    0 0 28px rgba(0,122,255,0.20);
+}
+.lg-btn-blue:active { transform: scale(0.97); transition-duration: 0.1s; }
+@keyframes blue-cta-shimmer {
+  0%   { background-position: 0 0, 0% 50%; }
+  50%  { background-position: 0 0, 100% 50%; }
+  100% { background-position: 0 0, 0% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-btn-blue { animation: none; }
 }
 
 /* ---------- Glass primitives ---------- */
@@ -184,7 +332,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 }
 
 /* ---------- Hero ---------- */
-.hero { padding: 150px 0 40px; }
+.hero { padding: 84px 0 40px; }
 .hero .sub {
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   color: var(--text-secondary);
@@ -215,7 +363,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   border: 1.5px solid transparent;
   background:
     linear-gradient(#0b0b0d, #0b0b0d) padding-box,
-    linear-gradient(135deg, rgba(10, 132, 255, 0.65), rgba(191, 90, 242, 0.55), rgba(94, 92, 230, 0.65)) border-box;
+    linear-gradient(135deg, rgba(10, 132, 255, 0.7), rgba(90, 200, 250, 0.55), rgba(0, 98, 217, 0.7)) border-box;
 }
 .video-frame video { width: 100%; aspect-ratio: 16 / 9; cursor: pointer; }
 .video-caption { text-align: center; color: var(--text-secondary); font-size: 14px; margin-top: 14px; }
@@ -256,31 +404,113 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   left: 0; top: 5px;
   height: 4px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #0a84ff, #bf5af2);
+  background: linear-gradient(90deg, #0a84ff, #5ac8fa);
   z-index: 1;
   transition: width 0.15s linear;
 }
 .stories-label {
   position: absolute;
   left: 16px;
-  bottom: 16px;
+  top: 30px;
   z-index: 5;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 16px;
+  padding: 7px 14px;
   border-radius: 999px;
   background: rgba(20, 20, 24, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(16px) saturate(1.4);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   color: #fff;
-  font-size: 14.5px;
+  font-size: 13.5px;
   font-weight: 600;
   pointer-events: none;
 }
-.stories-label .idx { color: rgba(255, 255, 255, 0.6); font-weight: 700; font-size: 13px; }
-.stories-label .dur { color: rgba(255, 255, 255, 0.55); font-weight: 500; font-size: 13px; }
+.stories-label .idx { color: rgba(255, 255, 255, 0.6); font-weight: 700; font-size: 12.5px; }
+
+/* ---------- Video control bar ---------- */
+.stories-controls {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: 16px;
+  background: rgba(20, 20, 24, 0.58);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  color: #fff;
+}
+.sc-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sc-btn:hover { background: rgba(255, 255, 255, 0.22); }
+.sc-time {
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.85);
+  flex-shrink: 0;
+  min-width: 84px;
+  text-align: center;
+}
+.sc-scrub {
+  flex: 1;
+  height: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  cursor: pointer;
+  accent-color: #0a84ff;
+  outline: none;
+}
+.sc-scrub::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.sc-speed {
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.10);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+.sc-speed:hover { background: rgba(255, 255, 255, 0.20); }
+@media (max-width: 560px) {
+  .sc-time { display: none; }
+  .stories-controls { gap: 8px; padding: 7px 10px; }
+}
 .stories-zone {
   position: absolute;
   top: 50%;
@@ -319,7 +549,9 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   width: 84px;
   height: 84px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(10, 132, 255, 0.92), rgba(94, 92, 230, 0.92));
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 40%),
+    linear-gradient(110deg, #0047b8 0%, #0062d9 25%, #007aff 50%, #0062d9 75%, #0047b8 100%);
   color: #fff;
   font-size: 26px;
   padding-left: 6px;
@@ -354,10 +586,39 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 /* ---------- Case study cards on home ---------- */
 .work-card {
   display: block;
-  padding: 38px;
+  padding: 0;
+  overflow: hidden;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .work-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.work-card-body { padding: 28px 32px 34px; }
+
+/* Looping glass visual — same Mux loop assets as myaios.app step cards */
+.glass-loop {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.glass-loop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 110%, var(--loop-accent, rgba(0,122,255,0.16)) 0%, transparent 55%),
+    linear-gradient(to bottom, transparent 55%, rgba(255, 255, 255, 0.30) 100%);
+  pointer-events: none;
+}
+.glass-loop img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.work-card:hover .glass-loop img { transform: scale(1.03); }
+.glass-loop img { transition: transform 0.5s ease; }
 .work-card .kicker { font-size: 13px; font-weight: 650; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); }
 .work-card h3 { font-size: 1.5rem; margin: 10px 0 12px; }
 .work-card p { color: var(--text-secondary); font-size: 15.5px; margin-bottom: 18px; }
@@ -373,7 +634,16 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .work-card .view { display: inline-block; margin-top: 20px; font-weight: 650; color: var(--accent); font-size: 15px; }
 
 /* ---------- Case study pages ---------- */
-.case-hero { padding: 150px 0 30px; }
+.case-hero { padding: 84px 0 30px; }
+
+/* Per-brand ambient wash — fixed layer painted over the default mesh */
+.case-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(40px);
+}
 .case-hero .role-line { color: var(--text-secondary); font-size: 15px; margin-bottom: 18px; }
 .case-hero .lede { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-secondary); max-width: 760px; margin: 20px 0 34px; }
 
@@ -384,6 +654,9 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   font-weight: 600;
   line-height: 1.5;
 }
+/* Keep the accent stripe on hover — .glass:hover sets border-color on
+   all four sides, which was wiping the blue left border. */
+.challenge-callout:hover { border-left-color: var(--accent); }
 .prose { max-width: 760px; color: var(--text-tertiary); }
 .prose p { margin-bottom: 16px; }
 .prose strong { color: var(--fg); }
@@ -449,23 +722,43 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .btn {
   display: inline-block;
   padding: 14px 30px;
-  border-radius: 999px;
+  border-radius: 14px;
   font-weight: 650;
   font-size: 16px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 12px 34px -12px rgba(10, 132, 255, 0.5); }
+/* Primary = aiOS lg-btn-blue, verbatim (see .lg-btn-blue above) */
 .btn.primary {
-  background: linear-gradient(135deg, #0a84ff, #5e5ce6 55%, #bf5af2);
-  background-size: 160% 160%;
   color: #fff;
-  animation: btn-grad 7s ease-in-out infinite alternate;
+  cursor: pointer;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 40%),
+    linear-gradient(110deg, #0047b8 0%, #0062d9 25%, #007aff 50%, #0062d9 75%, #0047b8 100%);
+  background-size: 100% 100%, 240% 100%;
+  background-position: 0 0, 0% 50%;
+  border: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.30),
+    inset 0 -1px 0 rgba(0,0,0,0.10),
+    0 2px 8px rgba(0,122,255,0.30),
+    0 6px 24px rgba(0,122,255,0.18),
+    0 0 20px rgba(0,122,255,0.15);
+  animation: blue-cta-shimmer 6s ease-in-out infinite;
+  transition: box-shadow 0.25s ease, filter 0.2s ease, transform 0.15s ease;
 }
+.btn.primary:hover {
+  transform: none;
+  filter: brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 -1px 0 rgba(0,0,0,0.12),
+    0 4px 16px rgba(0,122,255,0.35),
+    0 10px 36px rgba(0,122,255,0.22),
+    0 0 28px rgba(0,122,255,0.20);
+}
+.btn.primary:active { transform: scale(0.97); }
 .btn.ghost { background: var(--surface-strong); border: 1px solid var(--border); color: var(--fg); }
-@keyframes btn-grad {
-  from { background-position: 0% 0%; }
-  to { background-position: 100% 100%; }
-}
+.btn.ghost:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
 @media (prefers-reduced-motion: reduce) { .btn.primary { animation: none; } }
 
 /* Footer */

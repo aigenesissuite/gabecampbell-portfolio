@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CaseHero, Learning, NextCase } from "@/components/site";
+import { BrandMesh, CaseHero, Learning, NextCase } from "@/components/site";
 import { Walkthrough } from "@/components/walkthrough";
 
 export const metadata: Metadata = {
@@ -11,6 +11,15 @@ export const metadata: Metadata = {
 export default function AiosCase() {
   return (
     <main>
+      {/* aiOS brand wash: iOS blue / indigo / green / sky */}
+      <BrandMesh
+        colors={[
+          "rgba(10, 132, 255, 0.26)",
+          "rgba(94, 92, 230, 0.18)",
+          "rgba(52, 199, 89, 0.16)",
+          "rgba(90, 200, 250, 0.20)",
+        ]}
+      />
       <CaseHero
         eyebrow="AI Genesis · Founder & Principal Product Designer · 2024 – Present"
         title="aiOS — the AI employee that runs your business"

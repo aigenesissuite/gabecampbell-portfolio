@@ -9,11 +9,25 @@ export type Chapter = {
   duration: string;
 };
 
+const SPEEDS = [1, 1.2, 1.5, 2] as const;
+const DEFAULT_SPEED = 1.2;
+
+function fmt(sec: number) {
+  if (!Number.isFinite(sec)) return "0:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${m}:${s.toString().padStart(2, "0")}`;
+}
+
 export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const speedRef = useRef(DEFAULT_SPEED);
   const [idx, setIdx] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [time, setTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [speed, setSpeed] = useState(DEFAULT_SPEED);
   const [started, setStarted] = useState(false);
 
   const current = chapters[idx];
@@ -23,13 +37,12 @@ export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
       const clamped = Math.max(0, Math.min(chapters.length - 1, i));
       setIdx(clamped);
       setProgress(0);
-      const v = videoRef.current;
-      if (!v) return;
-      // src swap happens via React; play after the new source is ready
+      setTime(0);
       requestAnimationFrame(() => {
         const vid = videoRef.current;
         if (!vid) return;
         vid.load();
+        vid.playbackRate = speedRef.current;
         if (autoplay) {
           vid.play().catch(() => setPlaying(false));
           setPlaying(true);
@@ -44,6 +57,7 @@ export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
     const v = videoRef.current;
     if (!v) return;
     if (v.paused) {
+      v.playbackRate = speedRef.current;
       v.play().catch(() => undefined);
       setPlaying(true);
       setStarted(true);
@@ -53,11 +67,35 @@ export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
     }
   }, []);
 
+  const cycleSpeed = useCallback(() => {
+    const next =
+      SPEEDS[(SPEEDS.indexOf(speedRef.current as (typeof SPEEDS)[number]) + 1) % SPEEDS.length];
+    speedRef.current = next;
+    setSpeed(next);
+    const v = videoRef.current;
+    if (v) v.playbackRate = next;
+  }, []);
+
+  const seek = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const v = videoRef.current;
+    if (!v || !v.duration) return;
+    const t = (Number(e.target.value) / 1000) * v.duration;
+    v.currentTime = t;
+    setTime(t);
+    setProgress(t / v.duration);
+  }, []);
+
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    v.playbackRate = speedRef.current;
     const onTime = () => {
+      setTime(v.currentTime);
       if (v.duration) setProgress(v.currentTime / v.duration);
+    };
+    const onMeta = () => {
+      setDuration(v.duration || 0);
+      v.playbackRate = speedRef.current;
     };
     const onEnded = () => {
       if (idx < chapters.length - 1) {
@@ -68,9 +106,11 @@ export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
       }
     };
     v.addEventListener("timeupdate", onTime);
+    v.addEventListener("loadedmetadata", onMeta);
     v.addEventListener("ended", onEnded);
     return () => {
       v.removeEventListener("timeupdate", onTime);
+      v.removeEventListener("loadedmetadata", onMeta);
       v.removeEventListener("ended", onEnded);
     };
   }, [idx, chapters.length, goTo]);
@@ -110,7 +150,6 @@ export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
             {idx + 1}/{chapters.length}
           </span>
           {current.title}
-          <span className="dur">{current.duration}</span>
         </div>
 
         {idx > 0 && (
@@ -136,6 +175,37 @@ export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
           <button className="stories-play" aria-label="Play" onClick={togglePlay}>
             <span>▶</span>
           </button>
+        )}
+
+        {started && (
+          <div className="stories-controls">
+            <button
+              className="sc-btn"
+              aria-label={playing ? "Pause" : "Play"}
+              onClick={togglePlay}
+            >
+              {playing ? "❚❚" : "▶"}
+            </button>
+            <input
+              className="sc-scrub"
+              type="range"
+              min={0}
+              max={1000}
+              value={duration ? Math.round((time / duration) * 1000) : 0}
+              onChange={seek}
+              aria-label="Seek"
+            />
+            <span className="sc-time">
+              {fmt(time)} / {fmt(duration)}
+            </span>
+            <button
+              className="sc-speed"
+              aria-label={`Playback speed ${speed}x`}
+              onClick={cycleSpeed}
+            >
+              {speed}×
+            </button>
+          </div>
         )}
       </div>
 

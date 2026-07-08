@@ -1,17 +1,43 @@
 import Link from "next/link";
 
+/**
+ * Nav — ported 1:1 from aiOS SiteNav (genesis-bos site-chrome.tsx):
+ * sticky glass bar, scroll-edge mask, 22px radius, same glass stack,
+ * same item metrics, brand wordmark with the aiOS blue shimmer, and
+ * the lg-btn-blue primary CTA.
+ */
 export function Nav() {
   return (
-    <nav className="nav">
-      <Link href="/" className="brand">
-        Gabe Campbell
-      </Link>
-      <Link href="/#work">Work</Link>
-      <Link href="/#about">About</Link>
-      <a href="mailto:gabecampbell9@gmail.com" className="cta">
-        Let&apos;s Talk
-      </a>
-    </nav>
+    <div className="nav-wrap">
+      <div className="nav-mask" aria-hidden="true" />
+      <nav className="nav-bar" aria-label="Primary">
+        <div className="nav-inner">
+          <Link href="/" className="nav-brand" aria-label="Gabe Campbell home">
+            <span className="nav-dot" aria-hidden="true" />
+            <span className="aios-shimmer">Gabe Campbell</span>
+          </Link>
+          <div className="nav-center">
+            <Link href="/" className="nav-item">Home</Link>
+            <Link href="/#work" className="nav-item">Work</Link>
+            <Link href="/#about" className="nav-item">About</Link>
+            <Link href="/work/aios" className="nav-item">aiOS</Link>
+          </div>
+          <div className="nav-right">
+            <a
+              href="https://linkedin.com/in/campbell-ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="nav-cta-light"
+            >
+              LinkedIn
+            </a>
+            <a href="mailto:gabecampbell9@gmail.com" className="lg-btn-blue nav-cta">
+              Let&apos;s Talk
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
   );
 }
 
@@ -29,6 +55,32 @@ export function Footer() {
         </a>
       </div>
     </footer>
+  );
+}
+
+/** Looping glass visuals — same Mux assets as myaios.app step cards. */
+export const GLASS_LOOPS = [
+  "1RdbcBtpEUK6501pc6yaIvwo9UfSnOg02k1uHxat00xR3w",
+  "t1TbTB8M1VYHkhxBuap4A8Vm1x015HTHyuQxqchDBago",
+  "6yvj9SR5bjmXq9N3ak7gy427RwUs8R2ZoH4ndA7Q1018",
+] as const;
+
+export function GlassLoop({ id, accent }: { id: string; accent: string }) {
+  return (
+    <div className="glass-loop" style={{ ["--loop-accent" as string]: accent }}>
+      {/* Poster paints instantly; the animated loop fades in over it. */}
+      <img
+        src={`https://image.mux.com/${id}/thumbnail.jpg?width=480`}
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        src={`https://image.mux.com/${id}/animated.gif?width=480&fps=12`}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+      />
+    </div>
   );
 }
 
@@ -60,6 +112,27 @@ export function NextCase({ href, title }: { href: string; title: string }) {
         </Link>
       </div>
     </section>
+  );
+}
+
+/** Per-brand ambient mesh override for case study pages. */
+export function BrandMesh({
+  colors,
+}: {
+  colors: [string, string, string, string];
+}) {
+  const [c1, c2, c3, c4] = colors;
+  return (
+    <div
+      className="case-mesh"
+      aria-hidden="true"
+      style={{
+        background: `radial-gradient(46% 40% at 10% 6%, ${c1}, transparent 70%),
+          radial-gradient(48% 42% at 90% 10%, ${c2}, transparent 70%),
+          radial-gradient(52% 46% at 82% 86%, ${c3}, transparent 70%),
+          radial-gradient(46% 42% at 12% 90%, ${c4}, transparent 70%)`,
+      }}
+    />
   );
 }
 
