@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import { BrandMesh, CaseHero, Learning, NextCase, Stat } from "@/components/site";
+import {
+  FigmaBoard,
+  Frame,
+  WfBlock,
+  WfBtn,
+  WfChip,
+  WfLine,
+  WfRow,
+} from "@/components/artifacts";
 
 export const metadata: Metadata = {
   title: "Google AI Design Foundations — Case Study | Gabe Campbell",
@@ -156,6 +165,76 @@ export default function GoogleCase() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>The audit — five teams, five languages</h2>
+            <p>
+              The component inventory made the fragmentation impossible to
+              argue with: 23 button styles across five products, then one
+              shared foundation.
+            </p>
+          </div>
+          <FigmaBoard
+            file="ml-foundations · audit-and-system.fig"
+            note="Recreated for this portfolio — original files remain on Google infrastructure. The audit findings and component set mirror the real system."
+          >
+            <Frame label="Button audit — 5 products" tag="before" w={250}>
+              <WfRow gap={8}>
+                <WfBtn label="Train" tone="primary" style={{ borderRadius: 2 }} />
+                <WfBtn
+                  label="TRAIN MODEL"
+                  tone="ghost"
+                  style={{ borderRadius: 999, fontSize: 10 }}
+                />
+              </WfRow>
+              <WfRow gap={8}>
+                <WfBtn
+                  label="Run training"
+                  tone="ghost"
+                  style={{ borderRadius: 6, borderStyle: "dashed" }}
+                />
+                <WfBtn label="→ Train" tone="danger" style={{ borderRadius: 12 }} />
+              </WfRow>
+              <WfRow gap={8}>
+                <WfBtn
+                  label="Start"
+                  tone="primary"
+                  style={{ borderRadius: 8, background: "#4285f4" }}
+                />
+                <WfChip label="…18 more variants" tone="warn" />
+              </WfRow>
+              <WfLine w="88%" h={7} tone="light" />
+              <WfLine w="64%" h={7} tone="light" />
+            </Frame>
+            <Frame label="Foundation — one system" tag="after" w={250} selected>
+              <WfRow gap={8}>
+                <WfBtn
+                  label="Train model"
+                  tone="primary"
+                  style={{ background: "#4285f4", borderRadius: 8 }}
+                />
+                <WfBtn label="Cancel" tone="ghost" style={{ borderRadius: 8 }} />
+              </WfRow>
+              <WfChip label="1 button · 4 sizes · 3 emphases" tone="good" />
+              <WfLine w="88%" h={7} tone="light" />
+              <WfLine w="72%" h={7} tone="light" />
+              <WfChip label="85% adoption across 5 teams" tone="info" />
+            </Frame>
+            <Frame label="AI-specific components" w={250}>
+              <WfBlock h={40}>Confidence indicator · 87% ▮▮▮▮▯</WfBlock>
+              <WfRow gap={6}>
+                <WfChip label="● Training" tone="warn" />
+                <WfChip label="● Deployed" tone="good" />
+                <WfChip label="● Failed" tone="neutral" />
+              </WfRow>
+              <WfBlock h={40}>Pipeline view · ingest → train → eval</WfBlock>
+              <WfBlock h={36}>Threshold slider · precision ⇄ recall</WfBlock>
+            </Frame>
+          </FigmaBoard>
         </div>
       </section>
 

@@ -1,5 +1,16 @@
 import type { Metadata } from "next";
 import { BrandMesh, CaseHero, Learning, NextCase, Stat } from "@/components/site";
+import {
+  FigmaBoard,
+  Frame,
+  WfBtn,
+  WfBubble,
+  WfChip,
+  WfInput,
+  WfLine,
+  WfRow,
+  WfStepper,
+} from "@/components/artifacts";
 
 export const metadata: Metadata = {
   title: "Lumin Digital AI Banking — Case Study | Gabe Campbell",
@@ -94,6 +105,69 @@ export default function LuminCase() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Before / after — account opening</h2>
+            <p>
+              The legacy wizard lost 73% of applicants. The conversational
+              redesign asked the same compliance questions as a chat — and
+              completion hit 90%.
+            </p>
+          </div>
+          <FigmaBoard
+            file="lumin · conversational-onboarding.fig"
+            note="Recreated for this portfolio — original files remain on Lumin Digital hardware under NDA. Flow structure and copy match the shipped product."
+          >
+            <Frame label="Application wizard — legacy" tag="before" w={250}>
+              <WfRow style={{ justifyContent: "space-between" }}>
+                <WfLine w="40%" h={9} tone="dark" />
+                <WfChip label="Step 3 of 9" tone="neutral" />
+              </WfRow>
+              <WfStepper total={9} active={3} />
+              <WfInput label="Social Security Number" />
+              <WfInput label="Employer name" />
+              <WfInput label="Annual income" />
+              <WfInput label="Employment start date" />
+              <WfChip label="73% abandon before step 9" tone="warn" />
+              <WfRow gap={8}>
+                <WfBtn label="Back" tone="ghost" style={{ flex: 1 }} />
+                <WfBtn label="Continue" tone="primary" style={{ flex: 1 }} />
+              </WfRow>
+            </Frame>
+            <Frame label="Conversational — shipped" tag="after" w={260} selected>
+              <WfBubble side="bot">
+                Nice to meet you, Maya! What kind of account are you opening
+                today?
+              </WfBubble>
+              <WfRow gap={6}>
+                <WfChip label="Checking" tone="info" />
+                <WfChip label="Savings" tone="info" />
+                <WfChip label="Both" tone="info" />
+              </WfRow>
+              <WfBubble side="user">Both, please</WfBubble>
+              <WfBubble side="bot">
+                Great choice. I&apos;ll need a couple of quick details for the
+                government — takes about 2 minutes.
+              </WfBubble>
+              <WfChip label="90% completion · compliance intact" tone="good" />
+            </Frame>
+            <Frame label="Conversation components" w={210}>
+              <WfBubble side="bot">
+                <WfLine w="90%" h={7} tone="dark" />
+                <WfLine w="64%" h={7} tone="dark" />
+              </WfBubble>
+              <WfRow gap={6}>
+                <WfChip label="Quick reply" tone="info" />
+                <WfChip label="+ 2 more" tone="neutral" />
+              </WfRow>
+              <WfInput label="Secure field · SSN masked" />
+              <WfChip label="Identity verified ✓" tone="good" />
+            </Frame>
+          </FigmaBoard>
         </div>
       </section>
 

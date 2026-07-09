@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import { BrandMesh, CaseHero, Learning, NextCase, Stat } from "@/components/site";
+import {
+  FigmaBoard,
+  Frame,
+  WfBlock,
+  WfBtn,
+  WfChip,
+  WfLine,
+  WfRow,
+} from "@/components/artifacts";
 
 export const metadata: Metadata = {
   title: "BMW Smart Charging — Case Study | Gabe Campbell",
@@ -222,6 +231,58 @@ export default function BmwCase() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Before / after — the charging flow</h2>
+            <p>
+              The shipped v1 charged the moment you plugged in. The redesign
+              moved charging into the overnight off-peak window while
+              guaranteeing readiness by departure time.
+            </p>
+          </div>
+          <FigmaBoard
+            file="bmw-connected · smart-charging.fig"
+            note="Recreated for this portfolio — the original Figma files live on BMW hardware under NDA. Flows, states, and copy are faithful to what shipped."
+          >
+            <Frame label="Charging — v1 shipped" tag="before" w={240}>
+              <WfRow style={{ justifyContent: "space-between" }}>
+                <WfLine w="44%" h={10} tone="dark" />
+                <WfLine w="18%" h={8} tone="light" />
+              </WfRow>
+              <WfBlock h={72}>Battery ring · 68% → charging now</WfBlock>
+              <WfChip label="Started 6:14 PM — peak grid hours" tone="warn" />
+              <WfChip label="$0.42/kWh peak rate" tone="warn" />
+              <WfLine w="86%" h={7} tone="light" />
+              <WfLine w="62%" h={7} tone="light" />
+              <WfBtn label="Stop charging" tone="ghost" />
+            </Frame>
+            <Frame label="Smart schedule — redesign" tag="after" w={240} selected>
+              <WfRow style={{ justifyContent: "space-between" }}>
+                <WfLine w="44%" h={10} tone="dark" />
+                <WfChip label="Ready by 7:30 AM" tone="good" />
+              </WfRow>
+              <WfBlock h={52}>Overnight timeline · 11:40 PM → 4:10 AM</WfBlock>
+              <WfChip label="Off-peak window · $0.11/kWh" tone="info" />
+              <WfChip label="Full charge guaranteed" tone="good" />
+              <WfRow gap={8}>
+                <WfBtn label="Charge now instead" tone="ghost" style={{ flex: 1 }} />
+                <WfBtn label="Adjust departure" tone="primary" style={{ flex: 1 }} />
+              </WfRow>
+            </Frame>
+            <Frame label="States — component system" w={200}>
+              <WfChip label="● Scheduled · 11:40 PM" tone="info" />
+              <WfLine w="90%" h={7} tone="light" />
+              <WfChip label="● Charging · off-peak" tone="good" />
+              <WfLine w="74%" h={7} tone="light" />
+              <WfChip label="● Ready · saved $2.10" tone="good" />
+              <WfLine w="82%" h={7} tone="light" />
+              <WfChip label="● Override · no penalty" tone="neutral" />
+            </Frame>
+          </FigmaBoard>
         </div>
       </section>
 

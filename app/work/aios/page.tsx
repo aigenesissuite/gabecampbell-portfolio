@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BrandMesh, CaseHero, Learning, NextCase } from "@/components/site";
+import { Shot, ShotGrid } from "@/components/artifacts";
 import { Walkthrough } from "@/components/walkthrough";
 
 export const metadata: Metadata = {
@@ -107,6 +108,38 @@ export default function AiosCase() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Live in production — screenshots from today</h2>
+            <p>
+              No mockups here. These were captured from the live product the
+              day this page was last updated — click any of them and check.
+            </p>
+          </div>
+          <ShotGrid>
+            <Shot
+              src="/images/aios-home.png"
+              alt="myaios.app homepage with liquid-glass hero and ambient gradient background"
+              caption="myaios.app — the marketing site, liquid-glass design system, coded by me."
+              href="https://myaios.app"
+            />
+            <Shot
+              src="/images/aios-agents.png"
+              alt="aiOS enterprise page showing six live agent cards: support, sales, ads, content, ops, and email"
+              caption="The agent roster — support, sales, ads, content, ops, and email agents reporting live counts."
+              href="https://myaios.app/enterprise"
+            />
+            <Shot
+              src="/images/aios-rtr-widget.png"
+              alt="RTR Vehicles website with the aiOS-powered chat widget open, showing product cards and a return-processing option"
+              caption="The RTR Vehicles deployment — an aiOS employee handling returns, fitment, and product discovery on a real storefront."
+              href="https://www.rtrvehicles.com"
+            />
+          </ShotGrid>
         </div>
       </section>
 

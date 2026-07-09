@@ -58,28 +58,23 @@ export function Footer() {
   );
 }
 
-/** Looping glass visuals — same Mux assets as myaios.app step cards. */
-export const GLASS_LOOPS = [
-  "1RdbcBtpEUK6501pc6yaIvwo9UfSnOg02k1uHxat00xR3w",
-  "t1TbTB8M1VYHkhxBuap4A8Vm1x015HTHyuQxqchDBago",
-  "6yvj9SR5bjmXq9N3ak7gy427RwUs8R2ZoH4ndA7Q1018",
-] as const;
-
-export function GlassLoop({ id, accent }: { id: string; accent: string }) {
+/** Brand header for work cards — company logo over a brand gradient that
+ *  dissolves into the card body (masked fade, no hard edge). */
+export function BrandHeader({
+  gradient,
+  logo,
+  alt,
+  logoWidth = 60,
+}: {
+  gradient: string;
+  logo: string;
+  alt: string;
+  logoWidth?: number;
+}) {
   return (
-    <div className="glass-loop" style={{ ["--loop-accent" as string]: accent }}>
-      {/* Poster paints instantly; the animated loop fades in over it. */}
-      <img
-        src={`https://image.mux.com/${id}/thumbnail.jpg?width=480`}
-        alt=""
-        aria-hidden="true"
-      />
-      <img
-        src={`https://image.mux.com/${id}/animated.gif?width=480&fps=12`}
-        alt=""
-        aria-hidden="true"
-        loading="lazy"
-      />
+    <div className="brand-header">
+      <div className="brand-header-bg" style={{ background: gradient }} aria-hidden="true" />
+      <img src={logo} alt={alt} style={{ width: logoWidth }} />
     </div>
   );
 }
