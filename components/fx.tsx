@@ -15,9 +15,6 @@ import { useEffect } from "react";
 export function Fx() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const candidates = document.querySelectorAll<HTMLElement>(
-      ".glass, .glass-surface, .section-head, .prose"
-    );
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
@@ -29,7 +26,21 @@ export function Fx() {
       },
       { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     );
+
+    // Cascaded grids + blur-grow entrances observe as whole units.
+    const units = document.querySelectorAll<HTMLElement>(
+      ".stagger-children, .reveal-grow"
+    );
+    for (const el of units) io.observe(el);
+
+    // Individual fade-up reveals — skip anything inside a stagger unit
+    // (the parent cascade owns those) and anything already a unit.
+    const candidates = document.querySelectorAll<HTMLElement>(
+      ".glass, .glass-surface, .section-head, .prose"
+    );
     for (const el of candidates) {
+      if (el.closest(".stagger-children") || el.classList.contains("reveal-grow"))
+        continue;
       const r = el.getBoundingClientRect();
       if (r.top > window.innerHeight * 0.9) {
         el.classList.add("reveal");

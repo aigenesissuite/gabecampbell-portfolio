@@ -171,6 +171,28 @@ export default function LuminCase() {
         </div>
       </section>
 
+      <section className="section apple-spotlight-bg">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>
+              Experience it <span className="shimmer">yourself</span>
+            </h2>
+            <p>
+              This is the actual conversational onboarding prototype — live,
+              not a video. Open an account the way Lumin&apos;s members do:
+              by talking.
+            </p>
+          </div>
+          <div className="typebot-shell reveal-grow">
+            <iframe
+              src="https://typebot.co/lumin-digital-conversational-onboarding-9q1m2kz"
+              title="Lumin Digital conversational onboarding — live demo"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="wrap">
           <div className="section-head">

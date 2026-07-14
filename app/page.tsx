@@ -99,7 +99,7 @@ export default function Home() {
 
       <section className="section" id="highlights">
         <div className="wrap">
-          <div className="stat-row">
+          <div className="stat-row stagger-children">
             <Stat num="Live" label="aiOS in production, paying customers" />
             <Stat num="50M+" label="daily users at Google scale" />
             <Stat num="8M+" label="banking members served at Lumin" />
@@ -213,7 +213,7 @@ export default function Home() {
               proving it with shipped outcomes.
             </p>
           </div>
-          <div className="grid-2">
+          <div className="grid-2 stagger-children">
             {work.map((w) => (
               <Link key={w.href} href={w.href} className="glass work-card">
                 <BrandHeader

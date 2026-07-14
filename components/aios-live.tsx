@@ -84,7 +84,7 @@ function ConvoPhone({
 
 export function ConvoRail() {
   return (
-    <div className="convo-rail">
+    <div className="convo-rail stagger-children">
       {CONVOS.map((c) => (
         <ConvoPhone key={c.src} {...c} />
       ))}
@@ -463,7 +463,7 @@ export function AgentConstellation() {
         ))}
       </svg>
 
-      <div className="constellation-grid">
+      <div className="constellation-grid stagger-children">
         {AGENTS.map((agent, i) => {
           const isActive = activeAgent === i;
           return (
@@ -589,7 +589,7 @@ const CONNECTORS = [
 
 export function ConnectorRow() {
   return (
-    <div className="connector-row">
+    <div className="connector-row stagger-children">
       {CONNECTORS.map((c, i) => (
         <div
           key={c.name}
@@ -601,6 +601,151 @@ export function ConnectorRow() {
           <span>{c.name}</span>
         </div>
       ))}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* TestimonialWall — card designs and copy from the myaios.app landing */
+/* page testimonial section, rendered with the portfolio glass tokens. */
+/* ------------------------------------------------------------------ */
+
+const AVATAR_COLORS = [
+  "#007AFF",
+  "#5856D6",
+  "#FF9500",
+  "#34C759",
+  "#FF3B30",
+  "#AF52DE",
+  "#FF2D55",
+  "#00C7BE",
+  "#5AC8FA",
+  "#FFCC00",
+];
+
+function Avatar({ name }: { name: string }) {
+  const initials = name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+  const idx =
+    name.split("").reduce((a, c) => a + c.charCodeAt(0), 0) %
+    AVATAR_COLORS.length;
+  return (
+    <span className="lis-avatar" style={{ background: AVATAR_COLORS[idx] }}>
+      {initials}
+    </span>
+  );
+}
+
+function QuoteCard({
+  name,
+  handle,
+  body,
+}: {
+  name: string;
+  handle: string;
+  body: string;
+}) {
+  return (
+    <div className="glass-surface lis-card spotlight-card">
+      <div className="lis-head">
+        <Avatar name={name} />
+        <div>
+          <div className="lis-name">{name}</div>
+          <div className="lis-handle">{handle}</div>
+        </div>
+      </div>
+      <div className="lis-body">{body}</div>
+    </div>
+  );
+}
+
+function ThreadCard({
+  name,
+  handle,
+  time,
+  messages,
+}: {
+  name: string;
+  handle: string;
+  time: string;
+  messages: { from: "them" | "me"; text: string }[];
+}) {
+  return (
+    <div className="glass-surface lis-card spotlight-card">
+      <div className="lis-head">
+        <Avatar name={name} />
+        <div>
+          <div className="lis-name">{name}</div>
+          <div className="lis-handle">{handle}</div>
+        </div>
+      </div>
+      <div className="lis-time">{time}</div>
+      <div className="lis-bubbles">
+        {messages.map((m, i) => (
+          <span key={i} className={`lis-bubble ${m.from}`}>
+            {m.text}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function TestimonialWall() {
+  return (
+    <div className="lis-wall stagger-children">
+      <div className="lis-col">
+        <ThreadCard
+          name="Jess Reyes"
+          handle="Solo Founder, Skincare Brand"
+          time="Yesterday 9:31 PM"
+          messages={[
+            { from: "them", text: "I literally run my entire business from iMessage now" },
+            { from: "them", text: "It wrote 3 weeks of IG captions in 10 minutes" },
+            { from: "me", text: "Nice. How's engagement looking?" },
+            { from: "them", text: "Up 40%. And I haven't opened a design app in a month" },
+          ]}
+        />
+        <QuoteCard
+          name="Derek Faulkner"
+          handle="Precision Auto Parts"
+          body="Went live on a Friday afternoon. By Monday the AI had answered 89 customer emails. My team walked in to an empty inbox for the first time in 2 years."
+        />
+      </div>
+      <div className="lis-col">
+        <QuoteCard
+          name="Marcus Williams"
+          handle="Ops Director, HVAC Co."
+          body="The AI handled 312 customer inquiries last month. That was literally half of Tina's day. We moved her to project management. Response time went from 4 hours to 8 seconds."
+        />
+        <QuoteCard
+          name="Tom Richter"
+          handle="Commercial Contractor"
+          body="I'm 58 and I don't do apps. But this texts me like a real person. Told me my busiest day is Thursday and suggested I move my ad spend there. That one tip paid for a year of the service."
+        />
+      </div>
+      <div className="lis-col">
+        <ThreadCard
+          name="Lisa Morrison"
+          handle="Clinic Owner"
+          time="Today 10:47 AM"
+          messages={[
+            { from: "them", text: "We haven't needed to hire a new front desk person" },
+            { from: "them", text: "It handles booking, rescheduling, insurance questions, everything" },
+            { from: "me", text: "How's your team adjusting?" },
+            { from: "them", text: "They love it. Can we talk about adding the phone agent too?" },
+          ]}
+        />
+        <QuoteCard
+          name="Kai Nakamura"
+          handle="Product Manager"
+          body="The iMessage UX is what sold me. No new app to open. I text 'block 2-4pm tomorrow for deep work' and it's on my calendar. Magic."
+        />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { AnimatedStat } from "@/components/count-up";
+
 /**
  * Nav — ported 1:1 from aiOS SiteNav (genesis-bos site-chrome.tsx):
  * sticky glass bar, scroll-edge mask, 22px radius, same glass stack,
@@ -81,9 +83,39 @@ export function BrandHeader({
 
 export function Stat({ num, label }: { num: string; label: string }) {
   return (
-    <div className="glass stat">
-      <div className="num">{num}</div>
+    <div className="glass stat spotlight-card">
+      <div className="num">
+        <AnimatedStat value={num} />
+      </div>
       <div className="label">{label}</div>
+    </div>
+  );
+}
+
+/** Scar — a mistake and the fix that shipped because of it. */
+export function Scar({
+  broke,
+  brokeBody,
+  fix,
+  fixBody,
+}: {
+  broke: string;
+  brokeBody: string;
+  fix: string;
+  fixBody: string;
+}) {
+  return (
+    <div className="glass scar spotlight-card">
+      <div className="scar-half scar-broke">
+        <div className="scar-tag">What broke</div>
+        <h3>{broke}</h3>
+        <p>{brokeBody}</p>
+      </div>
+      <div className="scar-half scar-fix">
+        <div className="scar-tag">What shipped instead</div>
+        <h3>{fix}</h3>
+        <p>{fixBody}</p>
+      </div>
     </div>
   );
 }
@@ -149,7 +181,7 @@ export function CaseHero({
         <span className="eyebrow">{eyebrow}</span>
         <h1>{title}</h1>
         <p className="lede">{lede}</p>
-        <div className="stat-row">
+        <div className="stat-row stagger-children">
           {stats.map(([num, label]) => (
             <Stat key={label} num={num} label={label} />
           ))}

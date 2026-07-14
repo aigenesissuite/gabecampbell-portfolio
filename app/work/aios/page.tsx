@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { BrandMesh, CaseHero, Learning, NextCase } from "@/components/site";
+import { BrandMesh, CaseHero, NextCase, Scar } from "@/components/site";
 import { Shot, ShotGrid } from "@/components/artifacts";
 import { Walkthrough } from "@/components/walkthrough";
 import {
   AgentConstellation,
   ConnectorRow,
   ConvoRail,
+  TestimonialWall,
 } from "@/components/aios-live";
 
 export const metadata: Metadata = {
@@ -171,7 +172,7 @@ export default function AiosCase() {
               argument — and what shipped because of it.
             </p>
           </div>
-          <div className="feature-grid">
+          <div className="feature-grid stagger-children">
             <div className="glass-surface feature-card spotlight-card">
               <span className="feature-icon">💬</span>
               <div className="feature-kicker">iMessage-native AI</div>
@@ -284,7 +285,7 @@ export default function AiosCase() {
             <br />
             It should never start thinking for you.
           </p>
-          <div className="cos-artifacts">
+          <div className="cos-artifacts stagger-children">
             <div className="glass-surface cos-artifact spotlight-card">
               <span className="cos-file">SPEC.md</span>
               <p>
@@ -311,7 +312,7 @@ export default function AiosCase() {
               </p>
             </div>
           </div>
-          <div className="markers">
+          <div className="markers stagger-children">
             <div className="glass marker spotlight-card">
               <span className="marker-num">1</span>
               <div>
@@ -386,7 +387,7 @@ export default function AiosCase() {
               </div>
             </div>
           </div>
-          <div className="cos-results">
+          <div className="cos-results stagger-children">
             <div className="glass-surface cos-result spotlight-card">
               <div className="cos-num">1.33 → 4.33</div>
               <p>
@@ -417,6 +418,57 @@ export default function AiosCase() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section apple-spotlight-bg">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>
+              What I got <span className="shimmer">wrong</span> — and what
+              shipped because of it
+            </h2>
+            <p>
+              Real products earn their scars. Each mistake below is paired with
+              the design that replaced it — the failures are why the product
+              works now.
+            </p>
+          </div>
+          <div className="scar-list stagger-children">
+            <Scar
+              broke="I over-trusted guardrails."
+              brokeBody="Early versions wrapped the AI in deterministic middleware for every edge case. Every patch made the product dumber, not safer — the guardrails were fighting the intelligence."
+              fix="One spine, strong persona."
+              fixBody="Subtracted the middleware entirely. A single intelligent spine with a well-designed persona beats fifty patches — behavior problems get fixed in the spec, not bolted on around it. That decision became Consciousness OS."
+            />
+            <Scar
+              broke="My paywall punished excitement."
+              brokeBody="The first paywall appeared mid-conversation, right when users were most engaged — and read as a betrayal. Trial users hit a wall at their happiest moment."
+              fix="Value first, then the ask."
+              fixBody="Rebuilt around delivered value: the AI shows what it's already made for you — the carousel, the draft, the booked call — then asks. Conversion stopped feeling like a toll booth and started feeling earned."
+            />
+            <Scar
+              broke="Onboarding leaked at the top."
+              brokeBody="Most signups never started the experience. I assumed low interest; instrumenting every step showed it was friction sequencing — the hard step was buried mid-flow."
+              fix="Verify up front, converse after."
+              fixBody="Phone verification moved to the very first step, and everything after became a single immersive conversation. The funnel drop moved from 70% mid-flow to the honest front door."
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>
+              What <span className="shimmer">users said</span>
+            </h2>
+            <p>
+              From the wall on myaios.app — owners, operators, and skeptics on
+              what changed when the digital employee showed up.
+            </p>
+          </div>
+          <TestimonialWall />
         </div>
       </section>
 
@@ -488,29 +540,6 @@ export default function AiosCase() {
               methodology and measured results, failures included — because an
               alignment claim you can&apos;t score is just a vibe.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="wrap">
-          <div className="section-head">
-            <h2>What I got wrong along the way</h2>
-            <p>Real products earn their scars. Three that taught me the most:</p>
-          </div>
-          <div className="grid-3">
-            <Learning
-              title="I over-trusted guardrails."
-              body="Early versions wrapped the AI in deterministic middleware for every edge case. It made the product dumber, not safer. The fix was subtraction: one intelligent spine with a strong persona beats fifty patches."
-            />
-            <Learning
-              title="My paywall punished excitement."
-              body="The first paywall appeared mid-conversation, right when users were most engaged — and read as a betrayal. Rebuilt it around delivered value: show what's been made for you, then ask."
-            />
-            <Learning
-              title="Onboarding leaked at the top."
-              body="Most signups never started the experience. Instrumenting every step revealed the drop wasn't interest — it was friction sequencing. Verification moved up front, everything else became conversational."
-            />
           </div>
         </div>
       </section>
