@@ -118,10 +118,7 @@ export default function Home() {
               My design <span className="shimmer">philosophy</span>
             </h2>
           </div>
-          <div className="glass-surface connector-panel" aria-hidden>
-            <RoutingTributaries />
-          </div>
-          <div className="prose philosophy-prose">
+          <div className="prose philosophy-lead">
             <p>
               I believe AI should amplify human capability, not replace it.
               My career has been one continuous thesis: software should feel
@@ -130,6 +127,11 @@ export default function Home() {
               Google — and then went and built the whole operating system
               myself.
             </p>
+          </div>
+          <div className="connector-stage" aria-hidden>
+            <RoutingTributaries />
+          </div>
+          <div className="prose philosophy-prose">
             <p>
               I&apos;m a designer who ships production code. aiOS was
               designed in the same tools it was built with, and I own every
@@ -149,20 +151,6 @@ export default function Home() {
               think, never start thinking for you. It ships as a falsifiable
               contract with an eval methodology and published results,
               failures included.
-            </p>
-            <p>
-              The philosophy has a backstory. I was homeless at 17 — no
-              family, no money, no safety net. I taught myself to sell, then
-              taught myself to build, and that took me from food banks to
-              shipping products at Toshiba, BMW, Google, and an 8M-member
-              banking platform. Years ago I lost a major contract in due
-              diligence for being a one-man operation — so I built the
-              system that makes one person ship like a department.
-            </p>
-            <p>
-              <strong>Business floats on results, not promises.</strong>{" "}
-              Every claim on this site links to something live you can use
-              right now.
             </p>
           </div>
           <div className="glass-surface quote-panel">
@@ -189,6 +177,9 @@ export default function Home() {
           <div className="live-duo">
             <GenThread />
             <div className="live-copy">
+              <h3 className="live-lead">
+                Two texts in. A morning of work out.
+              </h3>
               <p>
                 This is the whole product thesis in one thread: the owner sends
                 two short texts, and a morning of work happens — leads

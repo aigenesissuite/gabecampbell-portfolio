@@ -1190,7 +1190,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
    block sits flush with the right edge (space-between across .wrap). ── */
 .live-duo {
   display: grid;
-  grid-template-columns: auto minmax(0, 560px);
+  grid-template-columns: auto minmax(0, 600px);
   gap: 48px;
   align-items: stretch;
   justify-content: space-between;
@@ -1200,7 +1200,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   max-width: none;
   margin: 0;
   height: 100%;
-  max-height: 500px;
+  max-height: 560px;
   aspect-ratio: 590 / 1280;
   align-self: center;
 }
@@ -1216,9 +1216,17 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   color: var(--text-tertiary);
   align-self: center;
 }
-.live-copy p { margin-bottom: 14px; font-size: 16px; line-height: 1.65; }
+.live-lead {
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  color: var(--fg);
+  margin-bottom: 18px;
+}
+.live-copy p { margin-bottom: 14px; font-size: 16.5px; line-height: 1.68; }
 .live-copy strong { color: var(--fg); }
-.live-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.live-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
 @media (max-width: 800px) {
   .live-duo { grid-template-columns: 1fr; gap: 30px; }
   .live-duo .gen-thread {
@@ -1541,15 +1549,20 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   .connector-tile { animation: none; }
 }
 
-/* ── Philosophy stack — connector panel (nav width) under the heading,
-   centered prose, then the quote in its own panel (nav width). ── */
-.connector-panel {
-  width: 100%;
-  border-radius: 28px;
-  padding: 40px 32px 30px;
+/* ── Philosophy stack — thesis under the title, connector animation on
+   the page surface (no container), remaining prose, then the quote in
+   its own panel. All text bodies run the full nav width. ── */
+.philosophy-lead {
+  max-width: none;
+  font-size: 18px;
+  line-height: 1.65;
+  margin-bottom: 8px;
+}
+.connector-stage { margin: 24px 0 40px; }
+.philosophy-prose {
+  max-width: none;
   margin-bottom: 44px;
 }
-.philosophy-prose { margin-bottom: 40px; }
 .quote-panel {
   width: 100%;
   border-radius: 28px;
@@ -1561,11 +1574,10 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   line-height: 1.4;
   letter-spacing: -0.015em;
   text-align: center;
-  max-width: 760px;
+  max-width: 860px;
   margin: 0 auto;
 }
 @media (max-width: 700px) {
-  .connector-panel { padding: 26px 16px 20px; }
   .quote-panel { padding: 30px 22px; }
 }
 
