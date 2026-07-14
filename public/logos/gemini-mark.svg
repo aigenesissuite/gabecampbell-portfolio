@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Gemini">
+  <defs>
+    <linearGradient id="gm-g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4285F4"/>
+      <stop offset="25%" stop-color="#5B9EFF"/>
+      <stop offset="50%" stop-color="#9DC1FF"/>
+      <stop offset="75%" stop-color="#5B9EFF"/>
+      <stop offset="100%" stop-color="#076EFF"/>
+    </linearGradient>
+  </defs>
+  <path d="M60,6 C60,36.93 35.93,62 6,62 C35.93,62 60,87.07 60,118 C60,87.07 84.07,62 114,62 C84.07,62 60,36.93 60,6Z" fill="url(#gm-g)"/>
+</svg>

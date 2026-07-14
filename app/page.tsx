@@ -1,12 +1,9 @@
 import Link from "next/link";
 import { BrandHeader, Stat } from "@/components/site";
 import { Walkthrough } from "@/components/walkthrough";
-import {
-  AgentConstellation,
-  ConnectorMarquee,
-  GenThread,
-} from "@/components/aios-live";
+import { AgentConstellation, GenThread } from "@/components/aios-live";
 import { HeroStream } from "@/components/hero-stream";
+import { RoutingTributaries } from "@/components/routing-tributaries";
 
 const work = [
   {
@@ -121,57 +118,64 @@ export default function Home() {
               My design <span className="shimmer">philosophy</span>
             </h2>
           </div>
-          <div className="glass-surface philosophy-shell">
-            <ConnectorMarquee />
-            <blockquote className="philosophy-quote">
-              &ldquo;It&apos;s less important what AI can do. It&apos;s more
-              important how it makes people feel.&rdquo;
-            </blockquote>
-            <div className="prose philosophy-prose">
-              <p>
-                I believe AI should amplify human capability, not replace it.
-                My career has been one continuous thesis: software should feel
-                like a conversation, not a form. I prototyped conversational
-                banking at Lumin, built design foundations for AI products at
-                Google — and then went and built the whole operating system
-                myself.
-              </p>
-              <p>
-                I&apos;m a designer who ships production code. aiOS was
-                designed in the same tools it was built with, and I own every
-                layer — design tokens to React components to the agent
-                architecture underneath.
-              </p>
-              <p>
-                That philosophy is written down and testable. I published{" "}
-                <a
-                  href="https://github.com/aigenesissuite/consciousness-os"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Consciousness OS
-                </a>{" "}
-                — the behavioral spec behind aiOS: an AI should help you
-                think, never start thinking for you. It ships as a falsifiable
-                contract with an eval methodology and published results,
-                failures included.
-              </p>
-              <div className="philosophy-divider" aria-hidden />
-              <p>
-                The philosophy has a backstory. I was homeless at 17 — no
-                family, no money, no safety net. I taught myself to sell, then
-                taught myself to build, and that took me from food banks to
-                shipping products at Toshiba, BMW, Google, and an 8M-member
-                banking platform. Years ago I lost a major contract in due
-                diligence for being a one-man operation — so I built the
-                system that makes one person ship like a department.
-              </p>
-              <p>
-                <strong>
-                  Business floats on results, not promises.
-                </strong>{" "}
-                Every claim on this site links to something live you can use
-                right now.
+          <div className="philosophy-duo">
+            <div className="philosophy-copy">
+              <blockquote className="philosophy-quote">
+                &ldquo;It&apos;s less important what AI can do. It&apos;s more
+                important how it makes people feel.&rdquo;
+              </blockquote>
+              <div className="prose philosophy-prose">
+                <p>
+                  I believe AI should amplify human capability, not replace
+                  it. My career has been one continuous thesis: software
+                  should feel like a conversation, not a form. I prototyped
+                  conversational banking at Lumin, built design foundations
+                  for AI products at Google — and then went and built the
+                  whole operating system myself.
+                </p>
+                <p>
+                  I&apos;m a designer who ships production code. aiOS was
+                  designed in the same tools it was built with, and I own
+                  every layer — design tokens to React components to the
+                  agent architecture underneath.
+                </p>
+                <p>
+                  That philosophy is written down and testable. I published{" "}
+                  <a
+                    href="https://github.com/aigenesissuite/consciousness-os"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Consciousness OS
+                  </a>{" "}
+                  — the behavioral spec behind aiOS: an AI should help you
+                  think, never start thinking for you. It ships as a
+                  falsifiable contract with an eval methodology and published
+                  results, failures included.
+                </p>
+                <div className="philosophy-divider" aria-hidden />
+                <p>
+                  The philosophy has a backstory. I was homeless at 17 — no
+                  family, no money, no safety net. I taught myself to sell,
+                  then taught myself to build, and that took me from food
+                  banks to shipping products at Toshiba, BMW, Google, and an
+                  8M-member banking platform. Years ago I lost a major
+                  contract in due diligence for being a one-man operation —
+                  so I built the system that makes one person ship like a
+                  department.
+                </p>
+                <p>
+                  <strong>Business floats on results, not promises.</strong>{" "}
+                  Every claim on this site links to something live you can
+                  use right now.
+                </p>
+              </div>
+            </div>
+            <div className="philosophy-illo" aria-hidden>
+              <RoutingTributaries />
+              <p className="illo-caption">
+                The aiOS routing layer — every task streams to the best
+                provider, orchestrated from iMessage.
               </p>
             </div>
           </div>
@@ -190,7 +194,7 @@ export default function Home() {
               engine I built — the same renderer behind every live deployment.
             </p>
           </div>
-          <div className="glass-surface live-shell">
+          <div className="live-duo">
             <GenThread />
             <div className="live-copy">
               <p>

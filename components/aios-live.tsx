@@ -605,24 +605,6 @@ export function ConnectorRow() {
   );
 }
 
-/* ConnectorMarquee — the same connector surface, shrunk into a slow
-   right-looping marquee (philosophy section). Track is doubled so the
-   loop is seamless; rightward drift = translateX(-50%) → 0. */
-export function ConnectorMarquee() {
-  const doubled = [...CONNECTORS, ...CONNECTORS];
-  return (
-    <div className="connector-marquee" aria-hidden>
-      <div className="connector-marquee-track">
-        {doubled.map((c, i) => (
-          <div key={`${c.name}-${i}`} className="connector-mini glass-surface">
-            <img src={c.logo} alt="" width={22} height={22} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /* ------------------------------------------------------------------ */
 /* TestimonialWall — card designs and copy from the myaios.app landing */
 /* page testimonial section, rendered with the portfolio glass tokens. */
