@@ -117,6 +117,18 @@ export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
 
   return (
     <div className="stories">
+      <div className="stories-chips stories-tabs">
+        {chapters.map((c, i) => (
+          <button
+            key={c.src}
+            className={i === idx ? "chip active" : "chip"}
+            onClick={() => goTo(i, true)}
+          >
+            <b>{i + 1}</b> {c.title} <span className="dur">{c.duration}</span>
+          </button>
+        ))}
+      </div>
+
       <div className="stories-stage video-frame">
         <div className="stories-bars">
           {chapters.map((c, i) => (
@@ -207,18 +219,6 @@ export function StoriesPlayer({ chapters }: { chapters: Chapter[] }) {
             </button>
           </div>
         )}
-      </div>
-
-      <div className="stories-chips">
-        {chapters.map((c, i) => (
-          <button
-            key={c.src}
-            className={i === idx ? "chip active" : "chip"}
-            onClick={() => goTo(i, true)}
-          >
-            <b>{i + 1}</b> {c.title} <span className="dur">{c.duration}</span>
-          </button>
-        ))}
       </div>
     </div>
   );

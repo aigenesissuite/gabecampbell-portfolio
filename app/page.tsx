@@ -69,33 +69,10 @@ export default function Home() {
             <span className="shimmer">Then I ship them.</span>
           </h1>
           <p className="sub">
-            13+ years designing AI-native products at Google, BMW, and enterprise
-            fintech — and founder of AI Genesis, where I designed, coded, and
-            launched aiOS: a live agentic platform with paying customers. Every
-            claim on this site links to something you can use right now.
+            13+ years at Google, BMW, and enterprise fintech — then I founded
+            AI Genesis and shipped aiOS, a live AI employee with paying
+            customers. Nothing on this site is a mockup.
           </p>
-          <div className="proof-links">
-            <a className="chip" href="https://myaios.app" target="_blank" rel="noopener noreferrer">
-              <span className="dot" /> myaios.app — live product
-            </a>
-            <a className="chip" href="https://www.rtrvehicles.com" target="_blank" rel="noopener noreferrer">
-              <span className="dot" /> rtrvehicles.com — AI employee, bottom right
-            </a>
-            <a className="chip" href="https://ai-genesis.ai" target="_blank" rel="noopener noreferrer">
-              <span className="dot" /> ai-genesis.ai — case study
-            </a>
-            <a
-              className="chip"
-              href="https://github.com/aigenesissuite/consciousness-os"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="dot" /> consciousness-os — published AI behavior spec
-            </a>
-            <a className="chip" href="tel:+19494644535">
-              <span className="dot" /> (949) 464-4535 — call the AI, it answers
-            </a>
-          </div>
           <Walkthrough caption="The full walkthrough in four chapters — skip around like stories. Everything shown is live in production, narrated by me." />
         </div>
       </header>
@@ -131,28 +108,6 @@ export default function Home() {
           <div className="connector-stage" aria-hidden>
             <RoutingTributaries />
           </div>
-          <div className="prose philosophy-prose">
-            <p>
-              I&apos;m a designer who ships production code. aiOS was
-              designed in the same tools it was built with, and I own every
-              layer — design tokens to React components to the agent
-              architecture underneath.
-            </p>
-            <p>
-              That philosophy is written down and testable. I published{" "}
-              <a
-                href="https://github.com/aigenesissuite/consciousness-os"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Consciousness OS
-              </a>{" "}
-              — the behavioral spec behind aiOS: an AI should help you
-              think, never start thinking for you. It ships as a falsifiable
-              contract with an eval methodology and published results,
-              failures included.
-            </p>
-          </div>
           <div className="glass-surface quote-panel">
             <blockquote className="philosophy-quote">
               &ldquo;It&apos;s less important what AI can do. It&apos;s more
@@ -170,8 +125,8 @@ export default function Home() {
               like
             </h2>
             <p>
-              A real Gen conversation, rendered with the production iMessage
-              engine I built — the same renderer behind every live deployment.
+              A real conversation, rendered with the production iMessage
+              engine I built.
             </p>
           </div>
           <div className="live-duo">
@@ -190,11 +145,6 @@ export default function Home() {
                 No dashboard. No prompt engineering. The most-used surface of
                 aiOS is the one every business owner already checks eighty
                 times a day.
-              </p>
-              <p>
-                Don&apos;t take the video&apos;s word for it — the product
-                answers a real line. Text it, or call and ask it your hardest
-                customer question. The demo is the product.
               </p>
               <div className="live-ctas">
                 <a className="btn primary" href="sms:+13053390512">
@@ -216,9 +166,8 @@ export default function Home() {
               <span className="shimmer">One brain</span>, every department
             </h2>
             <p>
-              The agent constellation, lifted straight from the aiOS production
-              codebase — six digital employees reporting live activity, the
-              same component running on myaios.app right now.
+              Six digital employees, one brain — the live component, straight
+              from the aiOS production codebase.
             </p>
           </div>
           <AgentConstellation />
@@ -231,10 +180,7 @@ export default function Home() {
             <h2>
               Selected <span className="shimmer">work</span>
             </h2>
-            <p>
-              Four products, one thread: making complex AI feel simple — and
-              proving it with shipped outcomes.
-            </p>
+            <p>Four products, one thesis: complex AI that feels simple.</p>
           </div>
           <div className="grid-2 stagger-children">
             {work.map((w) => (
@@ -266,11 +212,12 @@ export default function Home() {
 
       <section className="contact" id="contact">
         <div className="wrap">
-          <h2>Let&apos;s create something amazing</h2>
+          <h2>
+            Let&apos;s build something <span className="shimmer">real</span>
+          </h2>
           <p>
-            I&apos;m passionate about designing AI products that make a real
-            difference. If you&apos;re building the next generation of AI-native
-            experiences, I&apos;d love to hear about your vision.
+            If you&apos;re hiring a designer who ships production code — or
+            building an AI product that needs one — I answer fast.
           </p>
           <div className="btn-row">
             <a className="btn primary" href="mailto:gabecampbell9@gmail.com">
