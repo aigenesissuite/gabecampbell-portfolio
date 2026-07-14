@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BrandHeader, Stat } from "@/components/site";
 import { Walkthrough } from "@/components/walkthrough";
-import { GenThread } from "@/components/aios-live";
+import { AgentConstellation, GenThread } from "@/components/aios-live";
 
 const work = [
   {
@@ -108,10 +108,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="about">
+      <section className="section apple-spotlight-bg" id="about">
         <div className="wrap">
           <div className="section-head">
-            <h2>My design philosophy</h2>
+            <h2>
+              My design <span className="shimmer">philosophy</span>
+            </h2>
           </div>
           <div className="glass challenge-callout">
             It&apos;s less important what AI can do. It&apos;s more important how
@@ -147,10 +149,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" id="live">
+      <section className="section apple-spotlight-bg" id="live">
         <div className="wrap">
           <div className="section-head">
-            <h2>What working with aiOS feels like</h2>
+            <h2>
+              What working with <span className="shimmer">aiOS</span> feels
+              like
+            </h2>
             <p>
               A real Gen conversation, rendered with the production iMessage
               engine I built — the same renderer behind every live deployment.
@@ -181,10 +186,28 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section apple-spotlight-bg" id="constellation">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>
+              <span className="shimmer">One brain</span>, every department
+            </h2>
+            <p>
+              The agent constellation, lifted straight from the aiOS production
+              codebase — six digital employees reporting live activity, the
+              same component running on myaios.app right now.
+            </p>
+          </div>
+          <AgentConstellation />
+        </div>
+      </section>
+
       <section className="section" id="work">
         <div className="wrap">
           <div className="section-head">
-            <h2>Selected work</h2>
+            <h2>
+              Selected <span className="shimmer">work</span>
+            </h2>
             <p>
               Four products, one thread: making complex AI feel simple — and
               proving it with shipped outcomes.
