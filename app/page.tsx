@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { BrandHeader, Stat } from "@/components/site";
 import { Walkthrough } from "@/components/walkthrough";
-import { AgentConstellation, GenThread } from "@/components/aios-live";
+import {
+  AgentConstellation,
+  ConnectorMarquee,
+  GenThread,
+} from "@/components/aios-live";
+import { HeroStream } from "@/components/hero-stream";
 
 const work = [
   {
@@ -59,6 +64,7 @@ export default function Home() {
     <main>
       <header className="hero">
         <div className="wrap">
+          <HeroStream />
           <span className="eyebrow">Principal AI Product Designer</span>
           <h1>
             I design AI products.
@@ -115,36 +121,59 @@ export default function Home() {
               My design <span className="shimmer">philosophy</span>
             </h2>
           </div>
-          <div className="glass challenge-callout">
-            It&apos;s less important what AI can do. It&apos;s more important how
-            it makes people feel.
-          </div>
-          <div className="prose" style={{ marginTop: 28 }}>
-            <p>
-              I believe AI should amplify human capability, not replace it. My
-              career has been one continuous thesis: software should feel like a
-              conversation, not a form. I prototyped conversational banking at
-              Lumin, built design foundations for AI products at Google — and
-              then went and built the whole operating system myself.
-            </p>
-            <p>
-              I&apos;m a designer who ships production code. aiOS was designed in
-              the same tools it was built with, and I own every layer — design
-              tokens to React components to the agent architecture underneath.
-            </p>
-            <p>
-              That philosophy is written down and testable. I published{" "}
-              <a
-                href="https://github.com/aigenesissuite/consciousness-os"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Consciousness OS
-              </a>{" "}
-              — the behavioral spec behind aiOS: an AI should help you think,
-              never start thinking for you. It ships as a falsifiable contract
-              with an eval methodology and published results, failures included.
-            </p>
+          <div className="glass-surface philosophy-shell">
+            <ConnectorMarquee />
+            <blockquote className="philosophy-quote">
+              &ldquo;It&apos;s less important what AI can do. It&apos;s more
+              important how it makes people feel.&rdquo;
+            </blockquote>
+            <div className="prose philosophy-prose">
+              <p>
+                I believe AI should amplify human capability, not replace it.
+                My career has been one continuous thesis: software should feel
+                like a conversation, not a form. I prototyped conversational
+                banking at Lumin, built design foundations for AI products at
+                Google — and then went and built the whole operating system
+                myself.
+              </p>
+              <p>
+                I&apos;m a designer who ships production code. aiOS was
+                designed in the same tools it was built with, and I own every
+                layer — design tokens to React components to the agent
+                architecture underneath.
+              </p>
+              <p>
+                That philosophy is written down and testable. I published{" "}
+                <a
+                  href="https://github.com/aigenesissuite/consciousness-os"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Consciousness OS
+                </a>{" "}
+                — the behavioral spec behind aiOS: an AI should help you
+                think, never start thinking for you. It ships as a falsifiable
+                contract with an eval methodology and published results,
+                failures included.
+              </p>
+              <div className="philosophy-divider" aria-hidden />
+              <p>
+                The philosophy has a backstory. I was homeless at 17 — no
+                family, no money, no safety net. I taught myself to sell, then
+                taught myself to build, and that took me from food banks to
+                shipping products at Toshiba, BMW, Google, and an 8M-member
+                banking platform. Years ago I lost a major contract in due
+                diligence for being a one-man operation — so I built the
+                system that makes one person ship like a department.
+              </p>
+              <p>
+                <strong>
+                  Business floats on results, not promises.
+                </strong>{" "}
+                Every claim on this site links to something live you can use
+                right now.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -161,9 +190,9 @@ export default function Home() {
               engine I built — the same renderer behind every live deployment.
             </p>
           </div>
-          <div className="live-duo">
+          <div className="glass-surface live-shell">
             <GenThread />
-            <div className="prose">
+            <div className="live-copy">
               <p>
                 This is the whole product thesis in one thread: the owner sends
                 two short texts, and a morning of work happens — leads
@@ -176,11 +205,18 @@ export default function Home() {
                 times a day.
               </p>
               <p>
-                And it&apos;s not just text — the voice agent answers a real
-                phone line. Call{" "}
-                <a href="tel:+19494644535">(949) 464-4535</a> right now and
-                ask it your hardest customer question. The demo is the product.
+                Don&apos;t take the video&apos;s word for it — the product
+                answers a real line. Text it, or call and ask it your hardest
+                customer question. The demo is the product.
               </p>
+              <div className="live-ctas">
+                <a className="btn primary" href="sms:+13053390512">
+                  Text the AI
+                </a>
+                <a className="btn ghost" href="tel:+19494644535">
+                  Call (949) 464-4535
+                </a>
+              </div>
             </div>
           </div>
         </div>

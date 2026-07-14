@@ -10,7 +10,7 @@ export type Chapter = {
 };
 
 const SPEEDS = [1, 1.2, 1.5, 2] as const;
-const DEFAULT_SPEED = 1.2;
+const DEFAULT_SPEED = 1;
 
 function fmt(sec: number) {
   if (!Number.isFinite(sec)) return "0:00";

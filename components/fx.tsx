@@ -18,7 +18,10 @@ export function Fx() {
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
-          if (e.isIntersecting) {
+          // Reveal when entering the viewport — or if the element is already
+          // above it (user scrolled past before we observed). Never leave
+          // content stranded invisible.
+          if (e.isIntersecting || e.boundingClientRect.top < 0) {
             e.target.classList.add("in");
             io.unobserve(e.target);
           }
@@ -28,10 +31,19 @@ export function Fx() {
     );
 
     // Cascaded grids + blur-grow entrances observe as whole units.
+    // CRITICAL: content is visible by default in the CSS — we only "arm"
+    // (hide) units that are still below the fold at hydration time. No-JS,
+    // slow hydration, or fast scrolling can never strand content invisible.
     const units = document.querySelectorAll<HTMLElement>(
       ".stagger-children, .reveal-grow"
     );
-    for (const el of units) io.observe(el);
+    for (const el of units) {
+      const r = el.getBoundingClientRect();
+      if (r.top > window.innerHeight * 0.9) {
+        el.classList.add("armed");
+        io.observe(el);
+      }
+    }
 
     // Individual fade-up reveals — skip anything inside a stagger unit
     // (the parent cascade owns those) and anything already a unit.
