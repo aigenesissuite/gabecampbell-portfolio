@@ -164,6 +164,21 @@ export default function AiosCase() {
               memory and reviewed by me. The tooling I design for customers is
               the tooling I run my company on.
             </p>
+            <p>
+              The behavior layer is public. aiOS runs on{" "}
+              <a
+                href="https://github.com/aigenesissuite/consciousness-os"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Consciousness OS
+              </a>{" "}
+              — a published, testable spec for how an AI should behave with a
+              human: honest counsel over flattery, real disagreement, and the
+              final call always staying with the person. It ships with an eval
+              methodology and measured results, failures included — because an
+              alignment claim you can&apos;t score is just a vibe.
+            </p>
           </div>
         </div>
       </section>

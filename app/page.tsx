@@ -80,6 +80,14 @@ export default function Home() {
             <a className="chip" href="https://ai-genesis.ai" target="_blank" rel="noopener noreferrer">
               <span className="dot" /> ai-genesis.ai — case study
             </a>
+            <a
+              className="chip"
+              href="https://github.com/aigenesissuite/consciousness-os"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="dot" /> consciousness-os — published AI behavior spec
+            </a>
           </div>
           <Walkthrough caption="The full walkthrough in four chapters — skip around like stories. Everything shown is live in production, narrated by me." />
         </div>
@@ -117,6 +125,19 @@ export default function Home() {
               I&apos;m a designer who ships production code. aiOS was designed in
               the same tools it was built with, and I own every layer — design
               tokens to React components to the agent architecture underneath.
+            </p>
+            <p>
+              That philosophy is written down and testable. I published{" "}
+              <a
+                href="https://github.com/aigenesissuite/consciousness-os"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Consciousness OS
+              </a>{" "}
+              — the behavioral spec behind aiOS: an AI should help you think,
+              never start thinking for you. It ships as a falsifiable contract
+              with an eval methodology and published results, failures included.
             </p>
           </div>
         </div>

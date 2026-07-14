@@ -659,6 +659,15 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .prose { max-width: 760px; color: var(--text-tertiary); }
 .prose p { margin-bottom: 16px; }
 .prose strong { color: var(--fg); }
+.prose a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 122, 255, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+.prose a:hover { text-decoration-color: var(--accent); }
 
 /* Persona cards */
 .persona { padding: 26px; }
