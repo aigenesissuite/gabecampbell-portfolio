@@ -1572,6 +1572,11 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   margin: 26px 0;
 }
 .philosophy-illo { min-width: 0; }
+/* Let the constellation breathe past the grid edge on desktop — it is
+   the visual counterweight to a full column of text. */
+@media (min-width: 1100px) {
+  .philosophy-illo { margin-right: -44px; }
+}
 .illo-caption {
   margin-top: 14px;
   text-align: center;
@@ -1579,6 +1584,9 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--text-tertiary);
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (max-width: 900px) {
   .philosophy-duo { grid-template-columns: 1fr; gap: 44px; }
