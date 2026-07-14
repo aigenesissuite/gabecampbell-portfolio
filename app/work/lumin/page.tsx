@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "Lumin Digital AI Banking — Case Study | Gabe Campbell",
   description:
-    "AI-powered banking for 127 credit unions and 2.1M members: conversational onboarding, AI design companions, and an enterprise platform.",
+    "AI-powered banking for 127 credit unions and 8M+ white-label members: conversational onboarding, AI design companions, and an enterprise platform.",
 };
 
 export default function LuminCase() {
@@ -33,9 +33,9 @@ export default function LuminCase() {
       <CaseHero
         eyebrow="Lumin Digital · Principal Product Designer · 2021 – 2025"
         title="AI that speaks your design language"
-        lede="How I helped transform digital banking for 127 credit unions with AI-powered design systems, conversational interfaces, and intelligent automation — serving 2.1M members."
+        lede="How I helped transform digital banking for 127 credit unions with AI-powered design systems, conversational interfaces, and intelligent automation — serving 8M+ members across white-label deployments."
         stats={[
-          ["2.1M", "members served"],
+          ["8M+", "white-label members served"],
           ["127", "credit union implementations"],
           ["90%", "conversational onboarding completion"],
         ]}

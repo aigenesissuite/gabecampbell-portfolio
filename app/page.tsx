@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BrandHeader, Stat } from "@/components/site";
 import { Walkthrough } from "@/components/walkthrough";
+import { GenThread } from "@/components/aios-live";
 
 const work = [
   {
@@ -9,7 +10,7 @@ const work = [
     title: "aiOS — an AI employee that runs your business",
     blurb:
       "Founded, designed, and coded an agentic AI platform spanning iMessage, web, and voice — live in production with paying enterprise customers. The RTR Vehicles deployment resolves 92% of support conversations automatically.",
-    metrics: ["Live at myaios.app", "92% auto-resolution", "$180K/yr saved for one client"],
+    metrics: ["Live at myaios.app", "92% auto-resolution", "$15K/mo saved for one client"],
     gradient:
       "linear-gradient(135deg, #0a84ff 0%, #5e5ce6 55%, #30a5ff 100%)",
     logo: "/logos/aios.svg",
@@ -20,8 +21,8 @@ const work = [
     kicker: "Lumin Digital · 2021 – 2025",
     title: "AI-powered banking for 127 credit unions",
     blurb:
-      "Conversational onboarding, AI design companions, and an enterprise platform serving 2.1M members — replacing form-wizard banking UX with natural conversation.",
-    metrics: ["2.1M members", "90% onboarding completion", "$2.3M revenue"],
+      "Conversational onboarding, AI design companions, and an enterprise platform serving 8M+ members — replacing form-wizard banking UX with natural conversation.",
+    metrics: ["8M+ members", "90% onboarding completion", "$2.3M revenue"],
     gradient:
       "linear-gradient(135deg, #002429 0%, #00575f 55%, #00a2b8 100%)",
     logo: "/logos/lumin.svg",
@@ -88,6 +89,9 @@ export default function Home() {
             >
               <span className="dot" /> consciousness-os — published AI behavior spec
             </a>
+            <a className="chip" href="tel:+19494644535">
+              <span className="dot" /> (949) 464-4535 — call the AI, it answers
+            </a>
           </div>
           <Walkthrough caption="The full walkthrough in four chapters — skip around like stories. Everything shown is live in production, narrated by me." />
         </div>
@@ -98,8 +102,8 @@ export default function Home() {
           <div className="stat-row">
             <Stat num="Live" label="aiOS in production, paying customers" />
             <Stat num="50M+" label="daily users at Google scale" />
-            <Stat num="2.1M" label="banking members served at Lumin" />
-            <Stat num="$180K/yr" label="support cost saved for one aiOS client" />
+            <Stat num="8M+" label="banking members served at Lumin" />
+            <Stat num="$15K/mo" label="support cost saved for one aiOS client" />
           </div>
         </div>
       </section>
@@ -139,6 +143,40 @@ export default function Home() {
               never start thinking for you. It ships as a falsifiable contract
               with an eval methodology and published results, failures included.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="live">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>What working with aiOS feels like</h2>
+            <p>
+              A real Gen conversation, rendered with the production iMessage
+              engine I built — the same renderer behind every live deployment.
+            </p>
+          </div>
+          <div className="live-duo">
+            <GenThread />
+            <div className="prose">
+              <p>
+                This is the whole product thesis in one thread: the owner sends
+                two short texts, and a morning of work happens — leads
+                qualified, a follow-up drafted for approval, content queued and
+                posted. <strong>The human approves; the machine executes.</strong>
+              </p>
+              <p>
+                No dashboard. No prompt engineering. The most-used surface of
+                aiOS is the one every business owner already checks eighty
+                times a day.
+              </p>
+              <p>
+                And it&apos;s not just text — the voice agent answers a real
+                phone line. Call{" "}
+                <a href="tel:+19494644535">(949) 464-4535</a> right now and
+                ask it your hardest customer question. The demo is the product.
+              </p>
+            </div>
           </div>
         </div>
       </section>

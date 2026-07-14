@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BrandMesh, CaseHero, Learning, NextCase } from "@/components/site";
 import { Shot, ShotGrid } from "@/components/artifacts";
 import { Walkthrough } from "@/components/walkthrough";
+import { AgentRoster, ConvoRail } from "@/components/aios-live";
 
 export const metadata: Metadata = {
   title: "aiOS — Case Study | Gabe Campbell",
@@ -28,7 +29,7 @@ export default function AiosCase() {
         stats={[
           ["92%", "support conversations auto-resolved (RTR)"],
           ["8 sec", "median response time"],
-          ["$180K/yr", "support cost saved for one client"],
+          ["$15K/mo", "support cost saved for one client"],
         ]}
       />
 
@@ -108,6 +109,33 @@ export default function AiosCase() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>The actual conversations</h2>
+            <p>
+              Real iMessage threads, rendered with the production engine that
+              powers live deployments — the same renderer, bubbles, and timing
+              customers see.
+            </p>
+          </div>
+          <ConvoRail />
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>One brain, six departments</h2>
+            <p>
+              The agent roster from the aiOS design system — support, sales,
+              ads, content, ops, and email agents reporting live activity.
+            </p>
+          </div>
+          <AgentRoster />
         </div>
       </section>
 
@@ -206,7 +234,7 @@ export default function AiosCase() {
         </div>
       </section>
 
-      <NextCase href="/work/lumin" title="Lumin: AI banking for 2.1M members" />
+      <NextCase href="/work/lumin" title="Lumin: AI banking for 8M+ members" />
     </main>
   );
 }

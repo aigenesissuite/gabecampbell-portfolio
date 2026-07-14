@@ -968,3 +968,109 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .compare li { padding: 7px 0; font-size: 15px; color: var(--text-secondary); }
 .compare li::before { content: "✕  "; color: #ff6b5e; font-weight: 700; }
 .compare .after li::before { content: "✓  "; color: var(--success); }
+
+/* ---------- aiOS live assets: convo rail + gen thread ---------- */
+.convo-rail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+@media (max-width: 900px) { .convo-rail { grid-template-columns: 1fr; } }
+.convo { margin: 0; }
+.convo-frame {
+  position: relative;
+  border-radius: 34px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 24px 60px rgba(30, 40, 90, 0.16),
+    0 4px 14px rgba(30, 40, 90, 0.08);
+}
+.convo-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.convo figcaption {
+  padding: 14px 6px 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+}
+.convo figcaption strong {
+  display: block;
+  color: var(--fg);
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+.gen-thread { max-width: 380px; margin: 0 auto; }
+
+/* ---------- aiOS live assets: agent roster ---------- */
+.roster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+@media (max-width: 900px) { .roster { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .roster { grid-template-columns: 1fr; } }
+.agent-tile {
+  padding: 18px 20px;
+  border-top: 3px solid var(--agent-color, var(--accent));
+}
+.agent-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.agent-head img { border-radius: 7px; object-fit: contain; }
+.agent-name { font-weight: 700; font-size: 15.5px; color: var(--fg); }
+.agent-live {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--success, #34c759);
+}
+.agent-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success, #34c759);
+  animation: agent-pulse 1.8s ease-in-out infinite;
+}
+@keyframes agent-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.82); }
+}
+.agent-activity {
+  min-height: 42px;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.agent-activity.on { opacity: 1; transform: translateY(0); }
+.agent-metric {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--agent-color, var(--accent));
+}
+
+/* two-up layout: gen thread beside roster */
+.live-duo {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 44px;
+  align-items: center;
+}
+@media (max-width: 980px) { .live-duo { grid-template-columns: 1fr; } }
