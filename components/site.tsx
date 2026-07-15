@@ -64,16 +64,24 @@ export function BrandHeader({
   logo,
   alt,
   logoWidth = 60,
+  logoHeight,
 }: {
   gradient: string;
   logo: string;
   alt: string;
   logoWidth?: number;
+  logoHeight?: number;
 }) {
   return (
     <div className="brand-header">
       <div className="brand-header-bg" style={{ background: gradient }} aria-hidden="true" />
-      <img src={logo} alt={alt} style={{ width: logoWidth }} />
+      <img
+        src={logo}
+        alt={alt}
+        width={logoWidth}
+        height={logoHeight ?? logoWidth}
+        style={{ width: logoWidth, height: "auto" }}
+      />
     </div>
   );
 }

@@ -17,6 +17,7 @@ const work = [
       "linear-gradient(135deg, #0a84ff 0%, #5e5ce6 55%, #30a5ff 100%)",
     logo: "/logos/aios.svg",
     logoWidth: 76,
+    logoHeight: 76,
   },
   {
     href: "/work/lumin",
@@ -29,6 +30,7 @@ const work = [
       "linear-gradient(135deg, #002429 0%, #00575f 55%, #00a2b8 100%)",
     logo: "/logos/lumin.svg",
     logoWidth: 132,
+    logoHeight: 63,
   },
   {
     href: "/work/google",
@@ -41,6 +43,7 @@ const work = [
       "linear-gradient(120deg, rgba(66,133,244,0.55) 0%, rgba(234,67,53,0.42) 34%, rgba(251,188,5,0.46) 66%, rgba(52,168,83,0.5) 100%)",
     logo: "/logos/google.svg",
     logoWidth: 64,
+    logoHeight: 64,
   },
   {
     href: "/work/bmw",
@@ -53,6 +56,7 @@ const work = [
       "linear-gradient(135deg, #0653b6 0%, #1c69d4 55%, #81c4ff 100%)",
     logo: "/logos/bmw.svg",
     logoWidth: 72,
+    logoHeight: 72,
   },
 ];
 
@@ -117,6 +121,7 @@ export default function Home() {
                   logo={w.logo}
                   alt={`${w.kicker.split(" ·")[0]} logo`}
                   logoWidth={w.logoWidth}
+                  logoHeight={w.logoHeight}
                 />
                 <div className="work-card-body">
                   <div className="kicker">{w.kicker}</div>
