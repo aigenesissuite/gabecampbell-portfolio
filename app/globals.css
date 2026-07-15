@@ -195,23 +195,6 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   font-weight: 700;
   letter-spacing: -0.01em;
 }
-/* Presence dot — superscript top-right of the name (over the "ll"),
-   like an online-status badge rather than a list bullet. */
-.nav-dot {
-  position: absolute;
-  top: -2px;
-  right: -9px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--success);
-  box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4);
-  animation: nav-pulse 2.4s ease-in-out infinite;
-}
-@keyframes nav-pulse {
-  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4); }
-  50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(52, 199, 89, 0); }
-}
 .nav-center {
   display: flex;
   flex: 1;
@@ -345,16 +328,17 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 }
 
 /* ---------- Hero ---------- */
-/* Top padding is the fountain's sky — the stream rises through it. */
-.hero { padding: 172px 0 40px; }
+/* Top padding is the fountain's sky — the stream rises through it.
+   Taller than round 2 so the streaming reads before the title arrives. */
+.hero { padding: 216px 0 40px; }
 .hero .wrap { position: relative; }
-@media (max-width: 640px) { .hero { padding-top: 132px; } }
+@media (max-width: 640px) { .hero { padding-top: 160px; } }
 
 /* ── HeroStream — rising iMessage task chips above the title
    (ported from the aiOS homepage fountain). Band anchors its bottom
    to the top of the hero content and rises up behind the nav. ── */
 .hero-stream {
-  --hs-travel: clamp(240px, 30vh, 340px);
+  --hs-travel: clamp(300px, 38vh, 430px);
   position: absolute;
   bottom: 100%;
   left: 50%;
@@ -439,7 +423,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .hs-tapback--me { right: -6px; }
 .hs-tapback--them { left: -6px; }
 @media (max-width: 640px) {
-  .hero-stream { --hs-travel: clamp(150px, 20vh, 210px); }
+  .hero-stream { --hs-travel: clamp(180px, 24vh, 250px); }
   .hs-bubble { --drift: var(--drift-m, 0px); font-size: 10px; }
 }
 @keyframes hs-rise {
@@ -547,7 +531,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   display: block;
 }
 /* ---------- Walkthrough block (title + subtitle above, tabs below) ---------- */
-.hero .walkthrough { margin-top: 52px; }
+.hero .walkthrough { margin-top: 84px; }
 .video-head { text-align: center; margin-bottom: 26px; }
 .video-title {
   font-size: clamp(1.35rem, 2.6vw, 1.75rem);
@@ -771,17 +755,71 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .stat .num { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
 .stat .label { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
 
-/* ---------- Press strip — one-line credibility bar under the stats ---------- */
+/* ---------- Press strip — publication credit bar under the stats.
+   Anatomy: glass icon tile (left) · kicker + headline stack (center) ·
+   glass secondary CTA (right, same height as the icon tile). ---------- */
 .press-strip {
   display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 6px 14px;
+  align-items: center;
+  gap: 18px;
   margin-top: 16px;
-  padding: 18px 26px;
+  padding: 16px 18px;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .press-strip:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.press-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.55);
+  border: 0.5px solid rgba(255, 255, 255, 0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.press-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 220px;
+}
+/* Same nested-glass recipe as the nav "LinkedIn" pill, sized to match
+   the icon tile so the row reads balanced left-to-right. */
+.press-cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  height: 46px;
+  padding: 0 22px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.88);
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(28px) saturate(1.85) brightness(1.04);
+  -webkit-backdrop-filter: blur(28px) saturate(1.85) brightness(1.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease;
+}
+.press-strip:hover .press-cta { background: rgba(255, 255, 255, 0.62); }
+@media (max-width: 640px) {
+  .press-strip { flex-wrap: wrap; }
+  .press-cta { width: 100%; }
+}
 .press-kicker {
   font-size: 12.5px;
   font-weight: 700;
@@ -794,14 +832,6 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   font-size: 15.5px;
   font-weight: 600;
   color: var(--fg);
-  flex: 1;
-  min-width: 240px;
-}
-.press-read {
-  font-size: 14.5px;
-  font-weight: 650;
-  color: var(--accent);
-  white-space: nowrap;
 }
 
 /* ---------- Cards / grids ---------- */
@@ -843,8 +873,32 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   position: absolute;
   inset: 0;
   z-index: 0;
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 52%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 0%, black 52%, transparent 100%);
+  /* Smoothstep-shaped falloff: the old two-stop mask decayed linearly
+     and hit zero right at the band edge with visible slope — read as a
+     harsh line. These stops ease out so the band dissolves into the
+     card body imperceptibly. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 34%,
+    rgba(0, 0, 0, 0.82) 48%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.3) 71%,
+    rgba(0, 0, 0, 0.13) 81%,
+    rgba(0, 0, 0, 0.04) 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black 0%,
+    black 34%,
+    rgba(0, 0, 0, 0.82) 48%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.3) 71%,
+    rgba(0, 0, 0, 0.13) 81%,
+    rgba(0, 0, 0, 0.04) 90%,
+    transparent 100%
+  );
   filter: blur(0.5px);
 }
 /* No scale-on-hover: transforming a masked child forces the clipping
@@ -867,7 +921,31 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   font-size: 13.5px;
   font-weight: 650;
 }
-.work-card .view { display: inline-block; margin-top: 20px; font-weight: 650; color: var(--accent); font-size: 15px; }
+/* Card CTA — glass secondary button (same recipe as .press-cta), sized
+   for the card body. The whole card is the link; this is its affordance. */
+.work-card .view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 13px;
+  font-weight: 600;
+  font-size: 14.5px;
+  color: rgba(0, 0, 0, 0.88);
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(28px) saturate(1.85) brightness(1.04);
+  -webkit-backdrop-filter: blur(28px) saturate(1.85) brightness(1.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    inset 0 -0.5px 0 rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background 0.2s ease;
+}
+.work-card:hover .view { background: rgba(255, 255, 255, 0.62); }
 
 /* ---------- Case study pages ---------- */
 .case-hero { padding: 84px 0 30px; text-align: center; }
@@ -883,8 +961,18 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .case-hero .role-line { color: var(--text-secondary); font-size: 15px; margin-bottom: 18px; }
 .case-hero .lede { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-secondary); max-width: 760px; margin: 20px auto 34px; }
 
+/* Challenge template — 1/3 pull-quote tile + 2/3 body tile, equal height
+   (grid stretch). Body copy stays tight so the columns align cleanly. */
+.challenge-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  align-items: stretch;
+}
 .challenge-callout {
-  padding: 34px;
+  display: flex;
+  align-items: center;
+  padding: 30px;
   border-left: 4px solid var(--accent);
   font-size: 1.15rem;
   font-weight: 600;
@@ -893,6 +981,19 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 /* Keep the accent stripe on hover — .glass:hover sets border-color on
    all four sides, which was wiping the blue left border. */
 .challenge-callout:hover { border-left-color: var(--accent); }
+.challenge-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 34px;
+  color: var(--text-secondary);
+}
+.challenge-body p { margin-bottom: 14px; font-size: 15.5px; line-height: 1.65; }
+.challenge-body p:last-child { margin-bottom: 0; }
+.challenge-body strong { color: var(--fg); }
+@media (max-width: 800px) {
+  .challenge-row { grid-template-columns: 1fr; }
+}
 .prose { max-width: 760px; margin-left: auto; margin-right: auto; text-align: center; color: var(--text-tertiary); }
 .prose p { margin-bottom: 16px; }
 .prose strong { color: var(--fg); }
@@ -1236,12 +1337,20 @@ h3 { font-size: 1.2rem; font-weight: 650; }
     0 4px 14px rgba(30, 40, 90, 0.10),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
-.convo-frame video {
+.convo-frame video,
+.convo-frame img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: inherit;
 }
+/* Two-up variant for still mockups (imessage-d renderer frames). */
+.convo-rail--duo {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 720px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) { .convo-rail--duo { grid-template-columns: 1fr; } }
 .convo figcaption {
   padding: 14px 6px 0;
   font-size: 14.5px;

@@ -16,7 +16,6 @@ export function Nav() {
         <div className="nav-inner">
           <Link href="/" className="nav-brand" aria-label="Gabe Campbell home">
             <span className="aios-shimmer">Gabe Campbell</span>
-            <span className="nav-dot" aria-hidden="true" />
           </Link>
           <div className="nav-center">
             <Link href="/" className="nav-item">Home</Link>

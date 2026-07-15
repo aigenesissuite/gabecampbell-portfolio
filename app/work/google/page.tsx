@@ -43,24 +43,24 @@ export default function GoogleCase() {
         <div className="section-head">
           <h2>The challenge</h2>
         </div>
-        <div className="glass challenge-callout">
-          Five different teams. Five inconsistent approaches. An
-          engineering-led org where design took a backseat to functionality.
-        </div>
-        <div className="prose" style={{ marginTop: 28 }}>
-          <p>
-            Google&apos;s emerging AI products division was brilliant at
-            engineering but struggling with design coherence. Each team had
-            developed its own patterns, components, and visual language in
-            isolation — users were confused moving between products, and the
-            brand experience was fragmented.
-          </p>
-          <p>
-            We needed to prove that great design could{" "}
-            <strong>enhance technical excellence, not slow it down</strong> —
-            while navigating the ambiguity of AI products still finding their
-            market fit.
-          </p>
+        <div className="challenge-row">
+          <div className="glass challenge-callout">
+            Five different teams. Five inconsistent approaches. An
+            engineering-led org where design took a backseat to
+            functionality.
+          </div>
+          <div className="glass challenge-body">
+            <p>
+              Google&apos;s emerging AI division was brilliant at engineering
+              and fragmented in design — every team with its own patterns and
+              visual language, users confused moving between products.
+            </p>
+            <p>
+              The job: prove great design could <strong>enhance technical
+              excellence, not slow it down</strong> — while these AI products
+              were still finding their market fit.
+            </p>
+          </div>
         </div>
       </Section>
 

@@ -45,23 +45,24 @@ export default function LuminCase() {
         <div className="section-head">
           <h2>The challenge</h2>
         </div>
-        <div className="glass challenge-callout">
-          Credit unions were bleeding members to digital-first banks. They
-          needed enterprise-grade modernization without losing their personal
-          touch.
-        </div>
-        <div className="prose" style={{ marginTop: 28 }}>
-          <p>
-            Traditional banking UX wasn&apos;t cutting it. Credit union admins
-            struggled with legacy tools, while members abandoned onboarding at
-            a 73% bounce rate. Design teams spent weeks customizing each
-            implementation, and support costs were unsustainable.
-          </p>
-          <p>
-            We needed something radically different — an AI-powered platform
-            serving both <strong>B2B clients (credit unions) and their B2C
-            members</strong>, scaling across 127 unique implementations.
-          </p>
+        <div className="challenge-row">
+          <div className="glass challenge-callout">
+            Credit unions were bleeding members to digital-first banks. They
+            needed enterprise-grade modernization without losing their
+            personal touch.
+          </div>
+          <div className="glass challenge-body">
+            <p>
+              Legacy tools for admins. A 73% onboarding bounce rate for
+              members. Weeks of design customization per implementation, and
+              support costs that couldn&apos;t scale.
+            </p>
+            <p>
+              The answer had to serve <strong>credit unions and their members
+              at once</strong> — one AI-powered platform scaling across 127
+              unique implementations.
+            </p>
+          </div>
         </div>
       </Section>
 

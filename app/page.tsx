@@ -97,48 +97,37 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span className="press-kicker">Published work · Consciousness OS</span>
-          <span className="press-headline">
-            The Consciousness Substrate — an open spec, eval, and published
-            results for how AI should behave with a human
-          </span>
-          <span className="press-read">Read the spec ↗</span>
-        </a>
-      </Section>
-
-      <Section id="work">
-        <div className="section-head">
-          <h2>
-            Selected <span className="shimmer">work</span>
-          </h2>
-          <p>Four products, one thesis: complex AI that feels simple.</p>
-        </div>
-        <div className="grid-2 stagger-children">
-          {work.map((w) => (
-            <Link key={w.href} href={w.href} className="glass work-card">
-              <BrandHeader
-                gradient={w.gradient}
-                logo={w.logo}
-                alt={`${w.kicker.split(" ·")[0]} logo`}
-                logoWidth={w.logoWidth}
-                logoHeight={w.logoHeight}
+          <span className="press-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M7.5 3.5h6.9L19 8.1V19a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 6 19V5a1.5 1.5 0 0 1 1.5-1.5Z"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinejoin="round"
               />
-              <div className="work-card-body">
-                <div className="kicker">{w.kicker}</div>
-                <h3>{w.title}</h3>
-                <p>{w.blurb}</p>
-                <div className="metrics">
-                  {w.metrics.map((m) => (
-                    <span key={m} className="metric-pill">
-                      {m}
-                    </span>
-                  ))}
-                </div>
-                <span className="view">View case study →</span>
-              </div>
-            </Link>
-          ))}
-        </div>
+              <path
+                d="M14.2 3.8v4.5H19"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M9.2 12.4h5.6M9.2 15.6h5.6"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
+            </svg>
+          </span>
+          <span className="press-copy">
+            <span className="press-kicker">Published work · Consciousness OS</span>
+            <span className="press-headline">
+              The Consciousness Substrate — an open spec, eval, and published
+              results for how AI should behave with a human
+            </span>
+          </span>
+          <span className="press-cta">Read the spec ↗</span>
+        </a>
       </Section>
 
       <Section className="apple-spotlight-bg" id="about">
@@ -171,8 +160,7 @@ export default function Home() {
       <Section className="apple-spotlight-bg" id="live">
         <div className="section-head">
           <h2>
-            What working with <span className="shimmer">aiOS</span> feels
-            like
+            What <span className="shimmer">good UX</span> feels like
           </h2>
           <p>
             A real conversation, rendered with the production iMessage
@@ -211,7 +199,7 @@ export default function Home() {
       <Section className="apple-spotlight-bg" id="constellation">
         <div className="section-head">
           <h2>
-            <span className="shimmer">One brain</span>, every department
+            Human judgment, <span className="shimmer">AI Execution</span>
           </h2>
           <p>
             Six digital employees, one brain — the live component, straight
@@ -219,6 +207,41 @@ export default function Home() {
           </p>
         </div>
         <AgentConstellation />
+      </Section>
+
+      <Section id="work">
+        <div className="section-head">
+          <h2>
+            Case <span className="shimmer">Studies</span>
+          </h2>
+          <p>Four products, one thesis: complex AI that feels simple.</p>
+        </div>
+        <div className="grid-2 stagger-children">
+          {work.map((w) => (
+            <Link key={w.href} href={w.href} className="glass work-card">
+              <BrandHeader
+                gradient={w.gradient}
+                logo={w.logo}
+                alt={`${w.kicker.split(" ·")[0]} logo`}
+                logoWidth={w.logoWidth}
+                logoHeight={w.logoHeight}
+              />
+              <div className="work-card-body">
+                <div className="kicker">{w.kicker}</div>
+                <h3>{w.title}</h3>
+                <p>{w.blurb}</p>
+                <div className="metrics">
+                  {w.metrics.map((m) => (
+                    <span key={m} className="metric-pill">
+                      {m}
+                    </span>
+                  ))}
+                </div>
+                <span className="view">View case study →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </Section>
 
       <Section className="contact" id="contact">

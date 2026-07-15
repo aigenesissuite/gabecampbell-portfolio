@@ -38,9 +38,11 @@ const DRIFT_RIGHT = [148, 228, 312, 178, 268, 198, 288, 162];
 const DRIFT_RIGHT_MOBILE = [58, 92, 128, 72, 108, 82, 118, 64];
 const ROT = [-0.4, 0.7, -0.3, 0.8, -0.5, 0.65, -0.35, 0.45];
 
-const STREAM_COUNT = 10;
-const STAGGER_SEC = 0.9;
-const SPAWN_LANE_FRAC = 0.14;
+/* Sparse, steady stream: few bubbles, long even stagger, wide lane
+   separation — one or two pills in flight at a time, never a pile-up. */
+const STREAM_COUNT = 6;
+const STAGGER_SEC = 3.0;
+const SPAWN_LANE_FRAC = 0.55;
 
 export function HeroStream() {
   const bubbles = [];
@@ -55,16 +57,15 @@ export function HeroStream() {
     const drift = DRIFT_RIGHT[idx] * sign;
     const driftMobile = DRIFT_RIGHT_MOBILE[idx] * sign;
     const rotEnd = ROT[(i + laneIdx) % ROT.length] * 0.3;
-    const duration = 15 + ((i * 13 + laneIdx * 5) % 11) * 0.7;
-    const spawnPct = Math.round((i / (STREAM_COUNT - 1)) * 22);
+    const duration = 17 + ((i * 13 + laneIdx * 5) % 5) * 0.6;
     bubbles.push({
       entry,
       drift,
       driftMobile,
       rotEnd,
       duration,
-      spawnPct,
-      delay: i * STAGGER_SEC + laneIdx * 0.16,
+      spawnPct: 0,
+      delay: i * STAGGER_SEC,
     });
   }
 

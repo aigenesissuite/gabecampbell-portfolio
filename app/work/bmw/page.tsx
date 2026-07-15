@@ -56,23 +56,23 @@ export default function BmwCase() {
         <div className="section-head">
           <h2>The challenge</h2>
         </div>
-        <div className="glass challenge-callout">
-          Electric vehicles were creating a new problem: everyone charged at
-          the same time.
-        </div>
-        <div className="prose" style={{ marginTop: 28 }}>
-          <p>
-            As BMW launched their electric vehicle line, we discovered an
-            unexpected issue. Most drivers plugged in between 6–8 PM, creating
-            massive spikes in power demand that threatened to overwhelm grids
-            and raise electricity costs for everyone.
-          </p>
-          <p>
-            We needed charging that intelligently distributed itself through
-            the night while ensuring every driver had a full battery by
-            morning. The real challenge: making grid optimization feel{" "}
-            <strong>magical, not restrictive</strong>.
-          </p>
+        <div className="challenge-row">
+          <div className="glass challenge-callout">
+            Electric vehicles were creating a new problem: everyone charged
+            at the same time.
+          </div>
+          <div className="glass challenge-body">
+            <p>
+              Most drivers plugged in between 6–8 PM — demand spikes that
+              threatened to overwhelm grids and raise electricity costs for
+              everyone.
+            </p>
+            <p>
+              Charging had to distribute itself through the night with a full
+              battery guaranteed by morning — grid optimization that feels{" "}
+              <strong>magical, not restrictive</strong>.
+            </p>
+          </div>
         </div>
       </Section>
 

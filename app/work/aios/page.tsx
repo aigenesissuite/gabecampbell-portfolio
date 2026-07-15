@@ -4,7 +4,6 @@ import { Shot, ShotGrid } from "@/components/artifacts";
 import { Walkthrough } from "@/components/walkthrough";
 import {
   AgentConstellation,
-  ConnectorRow,
   ConvoRail,
   TestimonialWall,
 } from "@/components/aios-live";
@@ -49,24 +48,25 @@ export default function AiosCase() {
         <div className="section-head">
           <h2>The challenge</h2>
         </div>
-        <div className="glass challenge-callout">
-          Small businesses don&apos;t need another dashboard. They need an
-          employee who happens to be software.
-        </div>
-        <div className="prose" style={{ marginTop: 28 }}>
-          <p>
-            AI tooling in 2024 was powerful and unusable: prompt boxes,
-            settings pages, and workflow builders that assumed the user wanted
-            to learn AI. Business owners don&apos;t. They want the work done.
-          </p>
-          <p>
-            The design thesis behind aiOS: <strong>the text box is a
-            fallback, not the front door.</strong> The product reads intent,
-            surfaces what matters, and acts — the way a great employee does.
-            That meant designing for iMessage as a first-class surface,
-            building onboarding as a conversation instead of a form, and
-            making every AI action visible enough to trust.
-          </p>
+        <div className="challenge-row">
+          <div className="glass challenge-callout">
+            Small businesses don&apos;t need another dashboard. They need an
+            employee who happens to be software.
+          </div>
+          <div className="glass challenge-body">
+            <p>
+              AI tooling in 2024 was powerful and unusable — prompt boxes,
+              settings pages, workflow builders that assumed the user wanted
+              to learn AI. Business owners don&apos;t. They want the work
+              done.
+            </p>
+            <p>
+              The thesis: <strong>the text box is a fallback, not the front
+              door.</strong> aiOS reads intent, surfaces what matters, and
+              acts — iMessage as a first-class surface, onboarding as a
+              conversation, every AI action visible enough to trust.
+            </p>
+          </div>
         </div>
       </Section>
 
@@ -126,6 +126,55 @@ export default function AiosCase() {
         <ConvoRail />
       </Section>
 
+      <Section>
+        <div className="section-head">
+          <h2>Onboarding as a conversation</h2>
+          <p>
+            No intake form, no setup wizard — Gen introduces itself, reads
+            the business, and takes its first task. Stills from the same
+            production renderer as the clips above.
+          </p>
+        </div>
+        <div className="convo-rail convo-rail--duo stagger-children">
+          <figure className="convo">
+            <div className="convo-frame">
+              <img
+                src="/images/gen-onboard.webp"
+                width={720}
+                height={1561}
+                loading="lazy"
+                alt="iMessage thread of Gen onboarding a new business owner: Gen asks for the company name, reads the site and Instagram, and asks whether to start on the inbox or the socials"
+              />
+            </div>
+            <figcaption>
+              <strong>Minute one — Gen briefs itself</strong>
+              <span>
+                It finds the site and socials and learns the business before
+                asking a single setup question.
+              </span>
+            </figcaption>
+          </figure>
+          <figure className="convo">
+            <div className="convo-frame">
+              <img
+                src="/images/gen-dayone.webp"
+                width={720}
+                height={1561}
+                loading="lazy"
+                alt="iMessage thread of a business owner asking Gen how a product drop went; Gen reports the sell-out, queues the restock, and holds drafted follow-ups for approval"
+              />
+            </div>
+            <figcaption>
+              <strong>Day one — the owner&apos;s daily driver</strong>
+              <span>
+                Tapbacks, read receipts, drafts held for approval — trust
+                built in the UI the owner already lives in.
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+      </Section>
+
       <Section className="apple-spotlight-bg">
         <div className="section-head">
           <h2>
@@ -138,18 +187,6 @@ export default function AiosCase() {
           </p>
         </div>
         <AgentConstellation />
-      </Section>
-
-      <Section>
-        <div className="section-head">
-          <h2>It operates the tools you already run on</h2>
-          <p>
-            Connectors over secure OAuth — the digital employees work inside
-            the same accounts your human team uses, with per-tenant
-            isolation.
-          </p>
-        </div>
-        <ConnectorRow />
       </Section>
 
       <Section className="apple-spotlight-bg">
