@@ -354,11 +354,14 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   pointer-events: none;
   overflow: visible;
   z-index: 1;
+  /* Long top fade: bubbles dissolve well before the nav band so text
+     never collides with the wordmark (mobile) or piles under the bar. */
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(0, 0, 0, 0.4) 8%,
-    #000 18%,
+    rgba(0, 0, 0, 0.12) 14%,
+    rgba(0, 0, 0, 0.5) 26%,
+    #000 40%,
     #000 90%,
     rgba(0, 0, 0, 0.55) 97%,
     transparent 100%
@@ -366,8 +369,9 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(0, 0, 0, 0.4) 8%,
-    #000 18%,
+    rgba(0, 0, 0, 0.12) 14%,
+    rgba(0, 0, 0, 0.5) 26%,
+    #000 40%,
     #000 90%,
     rgba(0, 0, 0, 0.55) 97%,
     transparent 100%
@@ -425,6 +429,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .hs-tapback--me { right: -6px; }
 .hs-tapback--them { left: -6px; }
 @media (max-width: 640px) {
+  .hero-stream { --hs-travel: clamp(150px, 20vh, 210px); }
   .hs-bubble { --drift: var(--drift-m, 0px); font-size: 10px; }
 }
 @keyframes hs-rise {
@@ -544,10 +549,11 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   display: flex;
   gap: 6px;
 }
+/* 24px-tall hit area (WCAG target-size) around a 4px visual bar. */
 .stories-bars .sbar {
   flex: 1;
-  height: 14px;
-  padding: 5px 0;
+  height: 24px;
+  padding: 10px 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -559,14 +565,14 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .stories-bars .sbar::after {
   content: "";
   position: absolute;
-  left: 0; right: 0; top: 5px;
+  left: 0; right: 0; top: 10px;
   height: 4px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.28);
 }
 .stories-bars .sbar i {
   position: absolute;
-  left: 0; top: 5px;
+  left: 0; top: 10px;
   height: 4px;
   border-radius: 999px;
   background: linear-gradient(90deg, #0a84ff, #5ac8fa);
@@ -576,7 +582,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .stories-label {
   position: absolute;
   left: 16px;
-  top: 30px;
+  top: 38px;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -741,6 +747,39 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 .stat { padding: 26px 22px; text-align: center; }
 .stat .num { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; }
 .stat .label { font-size: 14px; color: var(--text-secondary); margin-top: 4px; }
+
+/* ---------- Press strip — one-line credibility bar under the stats ---------- */
+.press-strip {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 16px;
+  padding: 18px 26px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.press-strip:hover { transform: translateY(-2px); box-shadow: var(--shadow-soft); }
+.press-kicker {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.press-headline {
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--fg);
+  flex: 1;
+  min-width: 240px;
+}
+.press-read {
+  font-size: 14.5px;
+  font-weight: 650;
+  color: var(--accent);
+  white-space: nowrap;
+}
 
 /* ---------- Cards / grids ---------- */
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 20px; }
@@ -946,6 +985,13 @@ h3 { font-size: 1.2rem; font-weight: 650; }
 
 /* Footer */
 .footer { padding: 40px 0 60px; text-align: center; color: var(--text-secondary); font-size: 14px; }
+/* AA contrast on the lavender bg + underline so the link reads as one. */
+.footer-link {
+  color: #0055c9;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.footer-link:hover { color: var(--accent); }
 
 /* ---------- Figma-style artifact boards ---------- */
 .fig-board {

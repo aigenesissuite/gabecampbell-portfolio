@@ -85,6 +85,55 @@ export default function Home() {
             <Stat num="8M+" label="banking members served at Lumin" />
             <Stat num="$15K/mo" label="support cost saved for one aiOS client" />
           </div>
+          <a
+            className="glass press-strip spotlight-card"
+            href="https://usanews.com/newsroom/how-aios-is-giving-every-business-an-ai-employee-that-does-the-work-itself"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="press-kicker">In the press · USA News</span>
+            <span className="press-headline">
+              &ldquo;How aiOS Is Giving Every Business an AI Employee That
+              Does the Work Itself&rdquo;
+            </span>
+            <span className="press-read">Read the feature ↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section className="section" id="work">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>
+              Selected <span className="shimmer">work</span>
+            </h2>
+            <p>Four products, one thesis: complex AI that feels simple.</p>
+          </div>
+          <div className="grid-2 stagger-children">
+            {work.map((w) => (
+              <Link key={w.href} href={w.href} className="glass work-card">
+                <BrandHeader
+                  gradient={w.gradient}
+                  logo={w.logo}
+                  alt={`${w.kicker.split(" ·")[0]} logo`}
+                  logoWidth={w.logoWidth}
+                />
+                <div className="work-card-body">
+                  <div className="kicker">{w.kicker}</div>
+                  <h3>{w.title}</h3>
+                  <p>{w.blurb}</p>
+                  <div className="metrics">
+                    {w.metrics.map((m) => (
+                      <span key={m} className="metric-pill">
+                        {m}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="view">View case study →</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -171,42 +220,6 @@ export default function Home() {
             </p>
           </div>
           <AgentConstellation />
-        </div>
-      </section>
-
-      <section className="section" id="work">
-        <div className="wrap">
-          <div className="section-head">
-            <h2>
-              Selected <span className="shimmer">work</span>
-            </h2>
-            <p>Four products, one thesis: complex AI that feels simple.</p>
-          </div>
-          <div className="grid-2 stagger-children">
-            {work.map((w) => (
-              <Link key={w.href} href={w.href} className="glass work-card">
-                <BrandHeader
-                  gradient={w.gradient}
-                  logo={w.logo}
-                  alt={`${w.kicker.split(" ·")[0]} logo`}
-                  logoWidth={w.logoWidth}
-                />
-                <div className="work-card-body">
-                  <div className="kicker">{w.kicker}</div>
-                  <h3>{w.title}</h3>
-                  <p>{w.blurb}</p>
-                  <div className="metrics">
-                    {w.metrics.map((m) => (
-                      <span key={m} className="metric-pill">
-                        {m}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="view">View case study →</span>
-                </div>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 

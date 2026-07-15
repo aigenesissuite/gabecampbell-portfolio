@@ -119,6 +119,7 @@ export function GenThread() {
       <video
         ref={ref}
         src="/media/gen-thread.mp4"
+        poster="/media/gen-thread-poster.jpg"
         muted
         loop
         playsInline
@@ -606,8 +607,9 @@ export function ConnectorRow() {
 }
 
 /* ------------------------------------------------------------------ */
-/* TestimonialWall — card designs and copy from the myaios.app landing */
-/* page testimonial section, rendered with the portfolio glass tokens. */
+/* TestimonialWall — real user messages from production iMessage       */
+/* threads, verbatim, anonymized (names/roles changed). Sourced from   */
+/* the provenance-tracked quote bank; never edit quote text here.      */
 /* ------------------------------------------------------------------ */
 
 const AVATAR_COLORS = [
@@ -666,12 +668,10 @@ function QuoteCard({
 function ThreadCard({
   name,
   handle,
-  time,
   messages,
 }: {
   name: string;
   handle: string;
-  time: string;
   messages: { from: "them" | "me"; text: string }[];
 }) {
   return (
@@ -683,7 +683,7 @@ function ThreadCard({
           <div className="lis-handle">{handle}</div>
         </div>
       </div>
-      <div className="lis-time">{time}</div>
+      <div className="lis-time">via iMessage</div>
       <div className="lis-bubbles">
         {messages.map((m, i) => (
           <span key={i} className={`lis-bubble ${m.from}`}>
@@ -700,50 +700,62 @@ export function TestimonialWall() {
     <div className="lis-wall stagger-children">
       <div className="lis-col">
         <ThreadCard
-          name="Jess Reyes"
-          handle="Solo Founder, Skincare Brand"
-          time="Yesterday 9:31 PM"
+          name="Danielle K."
+          handle="Life & Mindset Coach"
           messages={[
-            { from: "them", text: "I literally run my entire business from iMessage now" },
-            { from: "them", text: "It wrote 3 weeks of IG captions in 10 minutes" },
-            { from: "me", text: "Nice. How's engagement looking?" },
-            { from: "them", text: "Up 40%. And I haven't opened a design app in a month" },
+            {
+              from: "them",
+              text: "That would be amazing I'm actually not sure where you came from or why you're texting me but that would be amazing.",
+            },
+            { from: "them", text: "Okay that sounds amazing" },
+            {
+              from: "them",
+              text: "You are so amazing I don't know how I got so lucky Thank you thank you thank you",
+            },
           ]}
         />
         <QuoteCard
-          name="Derek Faulkner"
-          handle="Precision Auto Parts"
-          body="Went live on a Friday afternoon. By Monday the AI had answered 89 customer emails. My team walked in to an empty inbox for the first time in 2 years."
+          name="Gene W."
+          handle="E-commerce Founder"
+          body="…everything about it is perfect!"
         />
       </div>
       <div className="lis-col">
         <QuoteCard
-          name="Marcus Williams"
-          handle="Ops Director, HVAC Co."
-          body="The AI handled 312 customer inquiries last month. That was literally half of Tina's day. We moved her to project management. Response time went from 4 hours to 8 seconds."
+          name="Marcus L."
+          handle="Coaching Brand Founder"
+          body="Love this one. Just zoom out a little… and we've nailed it effectively"
         />
         <QuoteCard
-          name="Tom Richter"
-          handle="Commercial Contractor"
-          body="I'm 58 and I don't do apps. But this texts me like a real person. Told me my busiest day is Thursday and suggested I move my ad spend there. That one tip paid for a year of the service."
+          name="Tony M."
+          handle="Woodworking Brand"
+          body="How do we get started where you take care of everything"
+        />
+        <QuoteCard
+          name="Sam T."
+          handle="aiOS user"
+          body="Stay amazing as always."
         />
       </div>
       <div className="lis-col">
         <ThreadCard
-          name="Lisa Morrison"
-          handle="Clinic Owner"
-          time="Today 10:47 AM"
+          name="Maya R."
+          handle="Spiritual Wellness Brand"
           messages={[
-            { from: "them", text: "We haven't needed to hire a new front desk person" },
-            { from: "them", text: "It handles booking, rescheduling, insurance questions, everything" },
-            { from: "me", text: "How's your team adjusting?" },
-            { from: "them", text: "They love it. Can we talk about adding the phone agent too?" },
+            {
+              from: "them",
+              text: "Wow these are good. What did you have in mind for these?",
+            },
+            {
+              from: "them",
+              text: "This is amazing. I'm working right now so I'm gonna sit with it and I'll get back to you. I appreciate this and look forward to building this out later.",
+            },
           ]}
         />
         <QuoteCard
-          name="Kai Nakamura"
-          handle="Product Manager"
-          body="The iMessage UX is what sold me. No new app to open. I text 'block 2-4pm tomorrow for deep work' and it's on my calendar. Magic."
+          name="Jenna P."
+          handle="Digital Products Founder"
+          body="That's awesome! Wow, you checked? How cool! What should we do next to push this business?"
         />
       </div>
     </div>

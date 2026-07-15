@@ -464,8 +464,9 @@ export default function AiosCase() {
               What <span className="shimmer">users said</span>
             </h2>
             <p>
-              From the wall on myaios.app — owners, operators, and skeptics on
-              what changed when the digital employee showed up.
+              Real messages from production iMessage threads, verbatim —
+              names and roles anonymized. This is what it sounds like when
+              the digital employee shows up.
             </p>
           </div>
           <TestimonialWall />
@@ -483,19 +484,25 @@ export default function AiosCase() {
           </div>
           <ShotGrid>
             <Shot
-              src="/images/aios-home.png"
+              src="/images/aios-home.webp"
+              width={1600}
+              height={966}
               alt="myaios.app homepage with liquid-glass hero and ambient gradient background"
               caption="myaios.app — the marketing site, liquid-glass design system, coded by me."
               href="https://myaios.app"
             />
             <Shot
-              src="/images/aios-agents.png"
+              src="/images/aios-agents.webp"
+              width={1600}
+              height={966}
               alt="aiOS enterprise page showing six live agent cards: support, sales, ads, content, ops, and email"
               caption="The agent roster — support, sales, ads, content, ops, and email agents reporting live counts."
               href="https://myaios.app/enterprise"
             />
             <Shot
-              src="/images/aios-rtr-widget.png"
+              src="/images/aios-rtr-widget.webp"
+              width={1600}
+              height={1329}
               alt="RTR Vehicles website with the aiOS-powered chat widget open, showing product cards and a return-processing option"
               caption="The RTR Vehicles deployment — an aiOS employee handling returns, fitment, and product discovery on a real storefront."
               href="https://www.rtrvehicles.com"

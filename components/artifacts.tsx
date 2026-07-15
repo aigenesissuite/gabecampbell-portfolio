@@ -186,13 +186,19 @@ export function Shot({
   alt,
   caption,
   href,
+  width,
+  height,
 }: {
   src: string;
   alt: string;
   caption: string;
   href?: string;
+  width?: number;
+  height?: number;
 }) {
-  const img = <img src={src} alt={alt} loading="lazy" />;
+  const img = (
+    <img src={src} alt={alt} loading="lazy" width={width} height={height} />
+  );
   return (
     <figure className="shot glass">
       {href ? (

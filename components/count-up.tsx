@@ -7,6 +7,12 @@ import { useEffect, useRef, useState } from "react";
  * aiOS enterprise page (genesis-bos rtr-content.tsx): cubic ease-out,
  * runs once when 30% visible.
  */
+function fmtFinal(end: number, decimals: number, prefix: string, suffix: string) {
+  const formatted =
+    decimals > 0 ? end.toFixed(decimals) : Math.round(end).toLocaleString("en-US");
+  return `${prefix}${formatted}${suffix}`;
+}
+
 export function CountUp({
   end,
   duration = 1800,
@@ -21,18 +27,16 @@ export function CountUp({
   decimals?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(`${prefix}0${suffix}`);
+  // SSR/no-JS renders the real number — the count-up is progressive
+  // enhancement, never the source of truth (a "0" stat is a lie).
+  const [display, setDisplay] = useState(fmtFinal(end, decimals, prefix, suffix));
   const hasRun = useRef(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const formatted =
-        decimals > 0
-          ? end.toFixed(decimals)
-          : Math.round(end).toLocaleString("en-US");
-      setDisplay(`${prefix}${formatted}${suffix}`);
+      setDisplay(fmtFinal(end, decimals, prefix, suffix));
       return;
     }
     const io = new IntersectionObserver(

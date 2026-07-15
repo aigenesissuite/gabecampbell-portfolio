@@ -49,10 +49,7 @@ export function Footer() {
       <div className="wrap">
         © 2026 Gabe Campbell · Imagined by Gabe Campbell, designed and coded with
         his AI fleet ·{" "}
-        <a
-          href="https://linkedin.com/in/campbell-ai"
-          style={{ color: "var(--accent)" }}
-        >
+        <a href="https://linkedin.com/in/campbell-ai" className="footer-link">
           LinkedIn
         </a>
       </div>

@@ -1,3 +1,5 @@
+import { preload } from "react-dom";
+
 import { StoriesPlayer, type Chapter } from "@/components/stories-player";
 
 const chapters: Chapter[] = [
@@ -28,6 +30,10 @@ const chapters: Chapter[] = [
 ];
 
 export function Walkthrough({ caption }: { caption: string }) {
+  // The chapter-1 poster is the LCP element on every page that renders
+  // the walkthrough — fetch it at high priority instead of waiting for
+  // the video element to request it.
+  preload(chapters[0].poster, { as: "image", fetchPriority: "high" });
   return (
     <>
       <StoriesPlayer chapters={chapters} />
