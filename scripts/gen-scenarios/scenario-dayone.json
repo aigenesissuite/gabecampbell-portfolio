@@ -1,0 +1,14 @@
+{
+  "peer_name": "Gen",
+  "peer_handle": "Gen",
+  "service": "iMessage",
+  "set_time": "Tue, Jul 14 at 12:06 PM",
+  "unread_count": 3,
+  "messages": [
+    { "side": "out", "text": "how'd the drop go", "delay_ms": 400, "typing_speed_ms": 65 },
+    { "side": "in", "text": "Sold out in 41 minutes. Waitlist emailed, restock queued for Friday.", "delay_ms": 700, "typing_ms": 1500, "reactions": ["heart"] },
+    { "side": "in", "text": "Three wholesale inquiries came in overnight. Two look real. Follow-ups are drafted — want to read them first?", "delay_ms": 900, "typing_ms": 1500 },
+    { "side": "out", "text": "send the two", "delay_ms": 800, "typing_speed_ms": 70, "read_receipt": "Read" },
+    { "side": "in", "text": "Sent. I'll flag you the moment they reply.", "delay_ms": 700, "typing_ms": 1100 }
+  ]
+}

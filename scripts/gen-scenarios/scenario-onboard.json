@@ -1,0 +1,15 @@
+{
+  "peer_name": "Gen",
+  "peer_handle": "Gen",
+  "service": "iMessage",
+  "set_time": "Mon, Jul 13 at 9:41 AM",
+  "unread_count": 2,
+  "messages": [
+    { "side": "in", "text": "Hey — I'm Gen. I run the busywork for your business. What's the company called?", "delay_ms": 500, "typing_ms": 1300 },
+    { "side": "out", "text": "Beacon Coffee Roasters", "delay_ms": 800, "typing_speed_ms": 70 },
+    { "side": "in", "text": "Found your site and your Instagram. Give me a minute — I'm reading everything.", "delay_ms": 700, "typing_ms": 1400 },
+    { "side": "in", "text": "Done. I know the menu, the wholesale program, and your top sellers. Want me on the inbox first, or the socials?", "delay_ms": 900, "typing_ms": 1500 },
+    { "side": "out", "text": "inbox", "delay_ms": 800, "typing_speed_ms": 90 },
+    { "side": "in", "text": "On it. Anything that needs a human, I text you first.", "delay_ms": 700, "typing_ms": 1100 }
+  ]
+}
