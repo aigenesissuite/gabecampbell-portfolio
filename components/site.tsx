@@ -15,8 +15,8 @@ export function Nav() {
       <nav className="nav-bar" aria-label="Primary">
         <div className="nav-inner">
           <Link href="/" className="nav-brand" aria-label="Gabe Campbell home">
-            <span className="nav-dot" aria-hidden="true" />
             <span className="aios-shimmer">Gabe Campbell</span>
+            <span className="nav-dot" aria-hidden="true" />
           </Link>
           <div className="nav-center">
             <Link href="/" className="nav-item">Home</Link>
@@ -134,16 +134,34 @@ export function Learning({ title, body }: { title: string; body: string }) {
   );
 }
 
+/**
+ * Layout-law primitive: every body section renders through this, so the
+ * nav-width container (.wrap) can never drift out of a page by hand.
+ */
+export function Section({
+  id,
+  className,
+  children,
+}: {
+  id?: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className={className ? `section ${className}` : "section"}>
+      <div className="wrap">{children}</div>
+    </section>
+  );
+}
+
 export function NextCase({ href, title }: { href: string; title: string }) {
   return (
-    <section className="section">
-      <div className="wrap">
-        <Link href={href} className="glass next-case">
-          <div className="label">Next case study</div>
-          <div className="title">{title} →</div>
-        </Link>
-      </div>
-    </section>
+    <Section>
+      <Link href={href} className="glass next-case">
+        <div className="label">Next case study</div>
+        <div className="title">{title} →</div>
+      </Link>
+    </Section>
   );
 }
 
@@ -159,10 +177,13 @@ export function BrandMesh({
       className="case-mesh"
       aria-hidden="true"
       style={{
-        background: `radial-gradient(65% 60% at 16% 8%, ${c1}, transparent 72%),
-          radial-gradient(62% 58% at 86% 16%, ${c2}, transparent 72%),
-          radial-gradient(68% 62% at 82% 88%, ${c3}, transparent 72%),
-          radial-gradient(62% 58% at 14% 90%, ${c4}, transparent 72%),
+        /* Falloffs run to 100% over oversized ellipses so the four corner
+           washes overlap mid-viewport — a 72% hard stop left an uncovered
+           band of --bg that read as a harsh seam between sections. */
+        background: `radial-gradient(88% 78% at 16% 8%, ${c1}, transparent 100%),
+          radial-gradient(84% 74% at 86% 16%, ${c2}, transparent 100%),
+          radial-gradient(88% 80% at 82% 88%, ${c3}, transparent 100%),
+          radial-gradient(84% 74% at 14% 90%, ${c4}, transparent 100%),
           var(--bg)`,
       }}
     />

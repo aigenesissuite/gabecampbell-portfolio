@@ -29,15 +29,24 @@ const chapters: Chapter[] = [
   },
 ];
 
-export function Walkthrough({ caption }: { caption: string }) {
+export function Walkthrough({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) {
   // The chapter-1 poster is the LCP element on every page that renders
   // the walkthrough — fetch it at high priority instead of waiting for
   // the video element to request it.
   preload(chapters[0].poster, { as: "image", fetchPriority: "high" });
   return (
-    <>
+    <div className="walkthrough">
+      <div className="video-head">
+        <h2 className="video-title">{title}</h2>
+        <p className="video-sub">{subtitle}</p>
+      </div>
       <StoriesPlayer chapters={chapters} />
-      <p className="video-caption">{caption}</p>
-    </>
+    </div>
   );
 }

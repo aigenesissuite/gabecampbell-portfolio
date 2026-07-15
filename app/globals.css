@@ -35,8 +35,8 @@ body {
   z-index: -2;
   overflow: hidden;
   background:
-    radial-gradient(42% 38% at 12% 8%, rgba(255, 173, 208, 0.30), transparent 70%),
-    radial-gradient(45% 40% at 88% 12%, rgba(160, 196, 255, 0.32), transparent 70%),
+    radial-gradient(60% 52% at 12% 8%, rgba(255, 173, 208, 0.30), transparent 100%),
+    radial-gradient(64% 56% at 88% 12%, rgba(160, 196, 255, 0.32), transparent 100%),
     var(--bg);
 }
 .mesh::before,
@@ -150,14 +150,19 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   z-index: 999;
   padding: 12px 12px 0;
 }
-/* Scroll-edge mask — Apple HIG pattern, same as aiOS: content fades
-   into the bg color before reaching the floating glass bar. */
+/* Scroll-edge mask — Apple HIG pattern: content softens into a
+   progressive blur before reaching the floating glass bar. A blur (not a
+   painted bg-color gradient) so it stays seamless over the per-page
+   ambient meshes instead of banding a solid #eae8f0 stripe across them. */
 .nav-mask {
   pointer-events: none;
   position: absolute;
   inset: 0 0 auto 0;
-  height: 52px;
-  background: linear-gradient(to bottom, #eae8f0 0%, rgba(234, 232, 240, 0.85) 45%, rgba(234, 232, 240, 0) 100%);
+  height: 64px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 100%);
 }
 .nav-bar {
   position: relative;
@@ -182,17 +187,22 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   padding: 12px 20px;
 }
 .nav-brand {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 9px;
   flex-shrink: 0;
   font-size: 15px;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
+/* Presence dot — superscript top-right of the name (over the "ll"),
+   like an online-status badge rather than a list bullet. */
 .nav-dot {
-  width: 8px;
-  height: 8px;
+  position: absolute;
+  top: -2px;
+  right: -9px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--success);
   box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.4);
@@ -536,7 +546,22 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   border-radius: inherit;
   display: block;
 }
-.video-caption { text-align: center; color: var(--text-secondary); font-size: 14px; margin-top: 14px; }
+/* ---------- Walkthrough block (title + subtitle above, tabs below) ---------- */
+.hero .walkthrough { margin-top: 52px; }
+.video-head { text-align: center; margin-bottom: 26px; }
+.video-title {
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.video-sub {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 620px;
+  margin: 10px auto 0;
+}
 
 /* ---------- Stories player ---------- */
 .stories-stage { position: relative; }
@@ -730,9 +755,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   transition: transform 0.2s;
 }
 .stories-play:hover span { transform: scale(1.07); }
-.stories-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 16px; }
-/* Tabs variant — the chapter row sits ABOVE the stage and drives it. */
-.stories-tabs { margin-top: 0; margin-bottom: 16px; }
+.stories-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 18px; }
 .stories-chips .chip { cursor: pointer; border: 1px solid var(--border); font-family: inherit; }
 .stories-chips .chip b { color: var(--accent); margin-right: 2px; }
 .stories-chips .chip .dur { color: var(--text-secondary); font-weight: 450; }
@@ -855,7 +878,7 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  filter: blur(40px);
+  filter: blur(64px);
 }
 .case-hero .role-line { color: var(--text-secondary); font-size: 15px; margin-bottom: 18px; }
 .case-hero .lede { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-secondary); max-width: 760px; margin: 20px auto 34px; }

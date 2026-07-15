@@ -8,13 +8,13 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gabecampbellportfolio.com"),
-  title: "Gabe Campbell — Principal AI Product Designer",
+  title: "Gabe Campbell — Principal AI Design Engineer",
   description:
-    "Principal product designer who ships. Designed, coded, and launched aiOS — a live agentic AI platform — plus AI products at Google, BMW, and Lumin Digital serving 50M+ users.",
+    "Principal AI design engineer. Designed, engineered, and launched aiOS — a live agentic AI platform — plus AI products at Google, BMW, and Lumin Digital serving 50M+ users.",
   openGraph: {
-    title: "Gabe Campbell — Principal AI Product Designer",
+    title: "Gabe Campbell — Principal AI Design Engineer",
     description:
-      "AI-native product design with receipts: live products, real customers, measurable outcomes.",
+      "AI-native product design with receipts: live products, production code, measurable outcomes.",
     images: ["/video/poster.jpg"],
   },
 };
