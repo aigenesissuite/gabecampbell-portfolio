@@ -8,7 +8,7 @@ import { RoutingTributaries } from "@/components/routing-tributaries";
 const work = [
   {
     href: "/work/aios",
-    kicker: "AI Genesis · 2024 – Present",
+    kicker: "AI Genesis · 2025 – Present",
     title: "aiOS — an AI employee that runs your business",
     blurb:
       "Founded, designed, and coded an agentic AI platform spanning iMessage, web, and voice — live in production with enterprise deployments. The RTR Vehicles deployment resolves 92% of support conversations automatically.",

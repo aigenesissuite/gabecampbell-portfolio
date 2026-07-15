@@ -27,7 +27,7 @@ export default function AiosCase() {
         ]}
       />
       <CaseHero
-        eyebrow="AI Genesis · Founder & Principal AI Design Engineer · 2024 – Present"
+        eyebrow="AI Genesis · Founder & Principal AI Design Engineer · 2025 – Present"
         title="aiOS — the AI employee that runs your business"
         lede="I founded AI Genesis to answer one question: what does software look like when the interface is a relationship? aiOS is the answer — an agentic AI platform spanning iMessage, web, and voice, designed and coded end-to-end by me, live in production with enterprise deployments."
         stats={[
