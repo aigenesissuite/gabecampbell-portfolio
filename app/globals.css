@@ -131,6 +131,24 @@ h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; }
 @media (prefers-reduced-motion: reduce) {
   .shimmer, .aios-shimmer { animation: none; }
 }
+/* iOS Safari: background-clip:text / animated-background children inside a
+   backdrop-filter ancestor (the glass nav) flicker to transparent for frames
+   when the backdrop layer re-rasterizes on scroll (CEO-observed: wordmark +
+   "Let's Talk" flashing/disappearing, 2026-07-16). Promoting each to its own
+   compositing layer detaches them from the backdrop repaint cycle. */
+.nav-brand .aios-shimmer {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+/* Buttons keep their :active scale transform, so promote their layer via
+   will-change:transform instead of setting transform here. */
+.lg-btn-blue.nav-cta { will-change: transform, background-position, filter; }
+.nav-cta-light {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 
 /* Scroll reveal (classes applied by Fx component) */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -868,6 +886,14 @@ h3 { font-size: 1.2rem; font-weight: 650; }
   isolation: isolate;
   border-radius: var(--radius) var(--radius) 0 0;
   overflow: hidden;
+  /* Safari/iOS: the masked+filtered bg child gets promoted to its own
+     compositing layer and IGNORES the ancestor border-radius clip —
+     square corners bleed past the card (CEO-observed 2026-07-16).
+     translateZ rasterizes the clip on this element; clip-path is the
+     belt for engines where the promoted child still escapes. */
+  transform: translateZ(0);
+  clip-path: inset(0 round var(--radius) var(--radius) 0 0);
+  -webkit-clip-path: inset(0 round var(--radius) var(--radius) 0 0);
 }
 .brand-header-bg {
   position: absolute;
