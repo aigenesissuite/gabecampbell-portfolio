@@ -31,16 +31,16 @@ export default function AiosCase() {
         title="aiOS — the AI employee that runs your business"
         lede="I founded AI Genesis to answer one question: what does software look like when the interface is a relationship? aiOS is the answer — an agentic AI platform spanning iMessage, web, and voice, designed and coded end-to-end by me, live in production with enterprise deployments."
         stats={[
-          ["92%", "support conversations auto-resolved (RTR)"],
+          ["92%", "inbound questions resolved with no human touch"],
           ["8 sec", "median response time"],
-          ["$15K/mo", "support cost saved for one client"],
+          ["27", "trust-break detectors judging real turns"],
         ]}
       />
 
       <Section>
         <Walkthrough
           title="The walkthrough"
-          subtitle="Four chapters — RTR's AI employee, the solo build, onboarding cinema, and AI over iMessage."
+          subtitle="Four chapters — an embedded AI employee, the solo build, onboarding cinema, and AI over iMessage."
         />
       </Section>
 
@@ -78,14 +78,13 @@ export default function AiosCase() {
         <div className="grid-3">
           <div className="glass card">
             <div className="icon">🏁</div>
-            <h3>RTR Vehicles — embedded AI employee</h3>
+            <h3>An embedded AI employee for a parts retailer</h3>
             <p>
-              A digital employee on rtrvehicles.com (bottom-right, live now):
-              product discovery, fitment answers, order tracking, and smart
+              A digital employee on the retailer&apos;s storefront: product
+              discovery, fitment answers, order tracking, and smart
               escalation trained on the team&apos;s real support history. It
-              replaced the workload of four full-time support hires —
-              about $15K/month — while resolving 92% of conversations without
-              a human.
+              covers about the output of four people, around the clock, and
+              resolves 92% of inbound questions without a human touch.
             </p>
           </div>
           <div className="glass card">
@@ -517,14 +516,6 @@ export default function AiosCase() {
             alt="aiOS enterprise page showing six live agent cards: support, sales, ads, content, ops, and email"
             caption="The agent roster — support, sales, ads, content, ops, and email agents reporting live counts."
             href="https://myaios.app/enterprise"
-          />
-          <Shot
-            src="/images/aios-rtr-widget.webp"
-            width={1600}
-            height={1329}
-            alt="RTR Vehicles website with the aiOS-powered chat widget open, showing product cards and a return-processing option"
-            caption="The RTR Vehicles deployment — an aiOS employee handling returns, fitment, and product discovery on a real storefront."
-            href="https://www.rtrvehicles.com"
           />
         </ShotGrid>
       </Section>

@@ -47,7 +47,7 @@ export default function BmwCase() {
         lede="How I helped pioneer BMW's first dynamic charging system — using machine learning to balance power grid load while creating a delightful experience for electric vehicle drivers."
         stats={[
           ["First", "dynamic charging at BMW"],
-          ["$4.2M", "revenue generated"],
+          ["2 to 6", "design team grown"],
           ["87%", "peak load reduction"],
         ]}
       />
@@ -283,7 +283,7 @@ export default function BmwCase() {
         <div className="stat-row">
           <Stat num="87%" label="peak load reduction" />
           <Stat num="$840" label="average annual driver savings" />
-          <Stat num="94%" label="user satisfaction" />
+          <Stat num="75%" label="faster concept-to-prototype with GenAI tooling" />
           <Stat num="2.3M kg" label="CO₂ reduced" />
         </div>
       </Section>

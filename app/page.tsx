@@ -11,8 +11,8 @@ const work = [
     kicker: "AI Genesis · 2025 – Present",
     title: "aiOS — an AI employee that runs your business",
     blurb:
-      "Founded, designed, and coded an agentic AI platform spanning iMessage, web, and voice — live in production with enterprise deployments. The RTR Vehicles deployment resolves 92% of support conversations automatically.",
-    metrics: ["Live at myaios.app", "92% auto-resolution", "$15K/mo saved for one client"],
+      "Founded, designed, and coded an agentic AI platform spanning iMessage, web, and voice — live in production with enterprise deployments. One client deployment resolves 92% of inbound support questions with no human touch.",
+    metrics: ["Live at myaios.app", "92% resolved, no human", "27 trust-break detectors"],
     gradient:
       "linear-gradient(135deg, #0a84ff 0%, #5e5ce6 55%, #30a5ff 100%)",
     logo: "/logos/aios.svg",
@@ -22,7 +22,7 @@ const work = [
   {
     href: "/work/lumin",
     kicker: "Lumin Digital · 2021 – 2025",
-    title: "AI-powered banking for 127 credit unions",
+    title: "AI-powered banking for 127 financial institutions",
     blurb:
       "Conversational onboarding, AI design companions, and an enterprise platform serving 8M+ members — replacing form-wizard banking UX with natural conversation.",
     metrics: ["8M+ members", "90% onboarding completion", "$2.3M revenue"],
@@ -51,7 +51,7 @@ const work = [
     title: "Smart EV charging for a smarter grid",
     blurb:
       "BMW's first dynamic charging experience — ML-scheduled charging that cut peak-hour load 87% while guaranteeing a full battery by morning.",
-    metrics: ["$4.2M revenue", "87% peak load reduction", "94% satisfaction"],
+    metrics: ["87% peak-hour load cut", "Team grown 2 to 6", "75% faster to prototype"],
     gradient:
       "linear-gradient(135deg, #0653b6 0%, #1c69d4 55%, #81c4ff 100%)",
     logo: "/logos/bmw.svg",
@@ -89,7 +89,7 @@ export default function Home() {
           <Stat num="Live" label="aiOS in production, built end to end solo" />
           <Stat num="50M+" label="daily users at Google scale" />
           <Stat num="8M+" label="banking members served at Lumin" />
-          <Stat num="$15K/mo" label="support cost saved for one aiOS client" />
+          <Stat num="200+" label="tool definitions in one aiOS orchestrator" />
         </div>
         <a
           className="glass press-strip spotlight-card"
