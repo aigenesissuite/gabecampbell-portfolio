@@ -197,7 +197,7 @@ export default function LuminCase() {
             <div>
               <h3>Enterprise discovery</h3>
               <p>
-                Interviewed 47 credit union executives and 200+ members.
+                Interviewed credit union executives and members.
                 Found the core tension: credit unions needed enterprise tools,
                 members wanted personal touch. Initial wireframes failed — too
                 corporate.
@@ -299,10 +299,10 @@ export default function LuminCase() {
           <h2>The <span className="shimmer">impact</span></h2>
         </div>
         <div className="stat-row">
-          <Stat num="5×" label="member engagement increase" />
-          <Stat num="$2.3M" label="revenue generated" />
-          <Stat num="47%" label="mobile adoption" />
-          <Stat num="89%" label="member satisfaction" />
+          <Stat num="90%" label="onboarding completion, up from 21%" />
+          <Stat num="$2.3M" label="attributed revenue" />
+          <Stat num="234" label="components in the design system" />
+          <Stat num="60%" label="faster design to development" />
         </div>
         <div className="glass pull-quote" style={{ marginTop: 20 }}>
           <p>

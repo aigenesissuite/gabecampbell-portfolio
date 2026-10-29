@@ -282,9 +282,9 @@ export default function BmwCase() {
         </div>
         <div className="stat-row">
           <Stat num="87%" label="peak load reduction" />
-          <Stat num="$840" label="average annual driver savings" />
+          <Stat num="2 to 6" label="design team grown" />
           <Stat num="75%" label="faster concept-to-prototype with GenAI tooling" />
-          <Stat num="2.3M kg" label="CO₂ reduced" />
+          <Stat num="1st" label="smart-charging experience at BMW" />
         </div>
       </Section>
 

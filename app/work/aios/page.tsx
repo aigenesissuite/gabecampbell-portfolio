@@ -32,7 +32,7 @@ export default function AiosCase() {
         lede="I founded AI Genesis to answer one question: what does software look like when the interface is a relationship? aiOS is the answer — an agentic AI platform spanning iMessage, web, and voice, designed and coded end-to-end by me, live in production with enterprise deployments."
         stats={[
           ["92%", "inbound questions resolved with no human touch"],
-          ["8 sec", "median response time"],
+          ["8.3 sec", "average reply, one client deployment"],
           ["27", "trust-break detectors judging real turns"],
         ]}
       />
